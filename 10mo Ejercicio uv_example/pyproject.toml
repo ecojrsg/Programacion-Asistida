@@ -1,0 +1,19 @@
+[project]
+name = "10mo-ejercicio-uv-example"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "ecojrsg", email = "jonathan.rsg.serna@gmai..com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "pandas>=3.0.5",
+]
+
+[project.scripts]
+10mo-ejercicio-uv-example = "10mo_ejercicio_uv_example:main"
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
