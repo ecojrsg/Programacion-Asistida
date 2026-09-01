@@ -78,4 +78,25 @@ Listado de los ejercicios, organizado por día de trabajo.
 - **Ubicación:** [`10mo Ejercicio uv_example/`](10mo%20Ejercicio%20uv_example/)
 - **Estado:** Por revisar
 
-### 11
+## Día 4 - 1 de septiembre de 2026
+
+### 11. Ejercicio de Streamlit - `por revisar`
+
+- **Tema:** Introducción a Streamlit.
+- **Descripción:** Crea una primera aplicación de Streamlit que muestra mensajes de bienvenida.
+- **Ubicación:** [`11vo Ejercicio streamlit/app.py`](11vo%20Ejercicio%20streamlit/app.py)
+- **Estado:** Por revisar
+
+### 12. Ejercicio de calculadora con Streamlit - `por revisar`
+
+- **Tema:** Aplicaciones interactivas con Streamlit.
+- **Descripción:** Implementa una calculadora con suma, resta, multiplicación y división, incluyendo la validación de división entre cero.
+- **Ubicación:** [`12vo Ejercicio streamlit calculadora/app.py`](12vo%20Ejercicio%20streamlit%20calculadora/app.py)
+- **Estado:** Por revisar
+
+### 13. Ejercicio de lista de tareas con Streamlit - `por revisar`
+
+- **Tema:** Estado de sesión en Streamlit.
+- **Descripción:** Implementa una lista de tareas que permite agregar y mostrar tareas durante la sesión.
+- **Ubicación:** [`13vo Ejercicio streamlit taks/app.py`](13vo%20Ejercicio%20streamlit%20taks/app.py)
+- **Estado:** Por revisar
