@@ -77,3 +77,5 @@ Listado de los ejercicios, organizado por día de trabajo.
 - **Descripción:** Proyecto empaquetado con `uv`, con un punto de entrada que muestra un mensaje de bienvenida y una dependencia de `pandas` declarada.
 - **Ubicación:** [`10mo Ejercicio uv_example/`](10mo%20Ejercicio%20uv_example/)
 - **Estado:** Por revisar
+
+### 11
