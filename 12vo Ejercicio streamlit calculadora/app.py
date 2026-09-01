@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+# @Author: Jonathan Serna
+# @Date:   2026-09-01 10:34:56
+# @Last Modified by:   Jonathan Serna
+# @Last Modified time: 2026-09-01 11:27:14
 import streamlit as st
 
 
