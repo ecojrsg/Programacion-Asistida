@@ -1,0 +1,18 @@
+Reservar Sala 1 (8, 10): True
+Reservar Sala 1 (10, 12): True
+Reservar Sala 1 (9, 11): False
+Reservar Sala 1 (14, 16): True
+Reservar Sala 2 (16, 17): True
+Reservar Sala 1 (14, 14): False
+Reservar Sala 2 (18:30, 19:15): True
+Cancelar inexistente: False
+Cancelar Sala 1 (14, 16): True
+
+Disponibilidad después de cancelar:
+Sala   | Inicio | Fin
+-----------------------
+Sala 1 | 00:00  | 08:00
+Sala 1 | 12:00  | 24:00
+Sala 2 | 00:00  | 16:00
+Sala 2 | 17:00  | 18:30
+Sala 2 | 19:15  | 24:00

@@ -1,0 +1,18 @@
+test_adjacency (__main__.BookingCalendarTests.test_adjacency) ... ok
+test_cancel_exact (__main__.BookingCalendarTests.test_cancel_exact) ... ok
+test_full_day (__main__.BookingCalendarTests.test_full_day) ... ok
+test_independent_rooms (__main__.BookingCalendarTests.test_independent_rooms) ... ok
+test_invalid_intervals (__main__.BookingCalendarTests.test_invalid_intervals) ... ok
+test_invalid_query (__main__.BookingCalendarTests.test_invalid_query) ... ok
+test_invalid_rooms (__main__.BookingCalendarTests.test_invalid_rooms) ... ok
+test_minutes (__main__.BookingCalendarTests.test_minutes) ... ok
+test_normalized_name (__main__.BookingCalendarTests.test_normalized_name) ... ok
+test_overlap_variants (__main__.BookingCalendarTests.test_overlap_variants) ... ok
+test_sorted_gaps (__main__.BookingCalendarTests.test_sorted_gaps) ... ok
+test_table_output (__main__.BookingCalendarTests.test_table_output) ... ok
+test_unknown_room (__main__.BookingCalendarTests.test_unknown_room) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.000s
+
+OK
