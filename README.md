@@ -114,3 +114,42 @@ Listado de los ejercicios, organizado por día de trabajo.
 - **Estado:** Revisado
 - **Documentación:** [`13vo Ejercicio streamlit taks/README.md`](13vo%20Ejercicio%20streamlit%20taks/README.md)
 - **PDF:** [`Ejercicio_13_Ejercicio_de_lista_de_tareas_con_Streamlit.pdf`](PDFs%20ejercicios/Ejercicio_13_Ejercicio_de_lista_de_tareas_con_Streamlit.pdf)
+
+## Día 5 - 24 de septiembre de 2026
+
+### 14. Ejercicio BookingCalendar con Chain of Thought
+
+- **Tema:** Pruebas y razonamiento estructurado con Chain of Thought.
+- **Descripción:** Implementa y prueba un calendario de reservaciones con evidencia de pruebas, documentación y demostración.
+- **Ubicación:** [`14vo Ejercicio CoT BookingCalendar/`](14vo%20Ejercicio%20CoT%20BookingCalendar/)
+- **Estado:** Revisado
+- **Documentación:** [`14vo Ejercicio CoT BookingCalendar/README.md`](14vo%20Ejercicio%20CoT%20BookingCalendar/README.md)
+- **PDF:** [`Ejercicio_14_BookingCalendar.pdf`](PDFs%20ejercicios/Ejercicio_14_BookingCalendar.pdf)
+- **Resumen técnico:** [`Ejercicio_14_Resumen_tecnico_CoT.pdf`](PDFs%20ejercicios/Ejercicio_14_Resumen_tecnico_CoT.pdf)
+
+### 15. Ejercicio de Skills MCPs
+
+- **Tema:** Servidores MCP y herramientas personalizadas.
+- **Descripción:** Configura un servidor MCP con herramientas para ejecutar funciones especializadas.
+- **Ubicación:** [`15vo Skills MCPs/`](15vo%20Skills%20MCPs/)
+- **Estado:** Revisado
+- **Documentación:** [`15vo Skills MCPs/README.md`](15vo%20Skills%20MCPs/README.md)
+- **PDF:** [`Ejercicio_15_15vo_Skills_MCPs.pdf`](PDFs%20ejercicios/Ejercicio_15_15vo_Skills_MCPs.pdf)
+
+### 16. Ejercicio de Agent
+
+- **Tema:** Agentes conectados a servidores MCP.
+- **Descripción:** Implementa un agente que consulta información de países mediante una herramienta MCP.
+- **Ubicación:** [`16vo Agent/`](16vo%20Agent/)
+- **Estado:** Revisado
+- **Documentación:** [`16vo Agent/README.md`](16vo%20Agent/README.md)
+- **PDF:** [`Ejercicio_16_16vo_Agent.pdf`](PDFs%20ejercicios/Ejercicio_16_16vo_Agent.pdf)
+
+### 17. Ejercicio Plan universitario
+
+- **Tema:** Planificación de horarios con herramientas MCP.
+- **Descripción:** Administra un horario universitario aplicando reglas de inscripción y persistiendo el estado actualizado.
+- **Ubicación:** [`17vo Plan uni/`](17vo%20Plan%20uni/)
+- **Estado:** Revisado
+- **Documentación:** [`17vo Plan uni/README.md`](17vo%20Plan%20uni/README.md)
+- **PDF:** [`Ejercicio_17_17vo_Plan_uni.pdf`](PDFs%20ejercicios/Ejercicio_17_17vo_Plan_uni.pdf)
