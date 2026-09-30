@@ -4,6 +4,7 @@ import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 
 from game import ExerciseGenerator, load_json, new_game, submit_answer, timeout
+from pet import ACTIONS, purchase_offer, skip_offer
 
 st.set_page_config(page_title="Castillo Matemático", page_icon="🏰")
 settings = load_json("config/settings.json")
@@ -35,6 +36,41 @@ st.metric("❤️ Vida", state["health"])
 st.metric("🪙 Oro", state["gold"])
 st.subheader("🗺️ Mapa")
 st.write(" → ".join(f"🚪 {i}" if i >= state["room"] else "✅" for i in range(1, settings["rooms"] + 1)))
+
+if not state["finished"] and state["health"] > 0:
+    st.subheader("🐾 Tu mascota")
+    pet_columns = st.columns(3)
+    pet_labels = {
+        "well_fed": "🥣 Bien alimentada",
+        "energy": "⚡ Energía",
+        "happiness": "😊 Felicidad",
+    }
+    for column, (stat, label) in zip(pet_columns, pet_labels.items()):
+        with column:
+            st.progress(state["pet"][stat], text=f"{label}: {state['pet'][stat]}/100")
+
+    st.caption("Ofertas de esta habitación")
+    offer_columns = st.columns(3)
+    for column, (action, details) in zip(offer_columns, ACTIONS.items()):
+        offer = state["offers"][action]
+        with column:
+            st.markdown(f"**{details['label']}**")
+            st.write(f"{offer['name']} · {offer['restore']} puntos · {offer['price']} 🪙")
+            if offer["status"] == "pending":
+                if st.button(
+                    f"Comprar · {offer['price']} 🪙",
+                    key=f"buy_{state['room']}_{action}",
+                    disabled=state["gold"] < offer["price"],
+                ):
+                    purchase_offer(state, action)
+                    st.rerun()
+                if st.button("Omitir", key=f"skip_{state['room']}_{action}"):
+                    skip_offer(state, action)
+                    st.rerun()
+            elif offer["status"] == "purchased":
+                st.success("Comprada")
+            else:
+                st.caption("Omitida")
 
 if state["finished"]:
     st.success(f"¡Victoria! Reuniste {state['gold']} monedas.")

@@ -9,7 +9,22 @@ def test_game_rules():
     generator = ExerciseGenerator(CATALOG)
     state = new_game(SETTINGS, generator)
     assert state["health"] == 100
+    assert set(state["pet"].values()) == {100}
+    assert set(state["offers"]) == {"alimentar", "jugar", "dormir"}
     assert submit_answer(state, state["exercise"].answer, SETTINGS, generator)
+    assert set(state["pet"].values()) == {90}
     state = new_game(SETTINGS, generator)
     timeout(state, SETTINGS, generator)
     assert state["health"] == 90
+
+
+def test_pet_decays_once_per_cleared_room_but_not_on_wrong_answers():
+    generator = ExerciseGenerator(CATALOG)
+    state = new_game(SETTINGS, generator)
+
+    assert not submit_answer(state, state["exercise"].answer + 1, SETTINGS, generator)
+    assert set(state["pet"].values()) == {100}
+
+    for expected_meter in (90, 80):
+        assert submit_answer(state, state["exercise"].answer, SETTINGS, generator)
+        assert set(state["pet"].values()) == {expected_meter}

@@ -6,6 +6,8 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 
+from pet import decay_pet, new_pet, new_room_offers
+
 ROOT = Path(__file__).parent
 
 
@@ -49,7 +51,14 @@ class ExerciseGenerator:
 
 
 def new_game(settings: dict, generator: ExerciseGenerator) -> dict:
-    state = {"room": 1, "health": settings["n"], "gold": settings["starting_gold"], "finished": False}
+    state = {
+        "room": 1,
+        "health": settings["n"],
+        "gold": settings["starting_gold"],
+        "finished": False,
+        "pet": new_pet(),
+        "offers": new_room_offers(),
+    }
     state["exercise"] = generator.generate(1)
     state["started_at"] = time.time()
     return state
@@ -58,12 +67,15 @@ def new_game(settings: dict, generator: ExerciseGenerator) -> dict:
 def submit_answer(state: dict, value: int, settings: dict, generator: ExerciseGenerator) -> bool:
     correct = value == state["exercise"].answer
     if correct:
+        decay_pet(state["pet"])
         state["gold"] += state["room"] * 10
         state["room"] += 1
         state["finished"] = state["room"] > settings["rooms"]
     else:
         state["health"] -= settings["x"]
     if not state["finished"]:
+        if correct:
+            state["offers"] = new_room_offers()
         state["exercise"] = generator.generate(state["room"])
         state["started_at"] = time.time()
     return correct
