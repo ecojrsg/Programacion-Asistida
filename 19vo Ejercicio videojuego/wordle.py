@@ -1,4 +1,7 @@
-"""Reglas y vocabulario del comodín Wordle."""
+# @Last Modified by:   Jonathan Serna
+# @Last Modified time: 2026-10-02 18:40:22
+
+"""Rules and vocabulary for the Wordle joker."""
 
 from __future__ import annotations
 
@@ -48,8 +51,12 @@ def normalize_word(word: str) -> str:
 
 def _known_word(word: str) -> str:
     normalized = normalize_word(word)
-    if not normalized or any(not ("a" <= letter <= "z" or letter == "ñ") for letter in normalized):
-        raise ValueError("La palabra solo puede contener letras del español.")
+    if not normalized or any(
+        not ("a" <= letter <= "z" or letter == "ñ") for letter in normalized
+    ):
+        raise ValueError(
+            "La palabra solo puede contener letras del español."
+        )
     if not MIN_WORD_LENGTH <= len(normalized) <= MAX_WORD_LENGTH:
         raise ValueError("La palabra debe tener entre 5 y 10 letras.")
     if normalized not in _WORD_SET:
@@ -59,7 +66,9 @@ def _known_word(word: str) -> str:
 
 def new_game(target: str | None = None) -> dict:
     """Create an isolated game, optionally with a deterministic target."""
-    answer = _known_word(target if target is not None else random.choice(SPANISH_WORDS))
+    answer = _known_word(
+        target if target is not None else random.choice(SPANISH_WORDS)
+    )
     return {"target": answer, "guesses": [], "status": "playing"}
 
 
@@ -68,7 +77,9 @@ def evaluate_guess(target: str, guess: str) -> list[str]:
     target = normalize_word(target)
     guess = normalize_word(guess)
     if len(target) != len(guess):
-        raise ValueError("La palabra debe tener la misma cantidad de letras que el objetivo.")
+        raise ValueError(
+            "La palabra debe tener la misma cantidad de letras que el objetivo."
+        )
 
     feedback = [ABSENT] * len(guess)
     remaining: dict[str, int] = {}

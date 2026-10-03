@@ -4,8 +4,8 @@
 
 Build a simple educational Streamlit game in which an adventurer explores a
 castle, defeats enemies by solving arithmetic exercises, and collects gold.
-The interface stays in Spanish; identifiers and technical documentation use
-English.
+The six-guess Wordle joker pauses combat time while active. The interface stays
+in Spanish; identifiers and technical documentation use English.
 
 ## Implemented Rules
 
@@ -18,6 +18,8 @@ English.
 - Victory occurs after the last room; zero or negative health shows defeat.
 - Difficulty increases according to the room ranges in the exercise catalog.
 - Subtraction stays nonnegative, and division uses an integer quotient.
+- The Wordle joker selects Spanish words with 5–10 letters, allows six guesses,
+  and counts duplicate letters after exact matches.
 
 ## Editable Configuration
 
@@ -33,11 +35,15 @@ English.
 ## Existing File Responsibilities
 
 - `app.py`: `main()` loads configuration and routes the session. Small render
-  functions handle the welcome screen, timer, status, answer form, and controls.
+  functions handle the welcome screen, timer, status, answer form, Wordle joker,
+  and controls. Combat time is excluded while Wordle is active.
 - `game.py`: `Exercise` stores an exercise, `ExerciseGenerator` creates it,
   and `new_game()`, `submit_answer()`, and `timeout()` update dictionary state.
   The private `_start_turn()` helper replaces the exercise and resets its timer.
-- `tests/test_game.py`: focused regression checks for rules and interface flows.
+- `wordle.py`: validates Spanish words, evaluates duplicate-aware feedback, and
+  tracks guesses through a win, loss, or active game.
+- `tests/test_game.py`: standard-library regression checks for game and Wordle
+  rules, timer pause/resume, and interface flows.
 
 ## Run
 
@@ -59,7 +65,9 @@ uv run python -B -m tests.test_game
 
 The checks cover initial state, independent games, answer damage and rewards,
 timeouts, fatal damage, victory, difficulty boundaries, all four operations,
-and starting, answering, restarting, exiting, and ending a game in Streamlit.
+Wordle word lengths, validation, duplicate feedback, six guesses, timer
+pause/resume, and starting, answering, restarting, exiting, and ending both
+games in Streamlit.
 
 ## Possible Future Improvements
 

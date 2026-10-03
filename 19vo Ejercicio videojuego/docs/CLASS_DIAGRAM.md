@@ -66,3 +66,7 @@ For an expired timer, the interface calls `timeout()` instead of
 `submit_answer()`. It deducts `z` health points and starts another exercise
 only while health remains. The interface hides the answer form after defeat
 or victory and keeps the exit and restart controls available.
+
+The Wordle joker rules live in `wordle.py` and its interface lives in `app.py`.
+Combat time is paused while Wordle is active; returning from cancellation, a win,
+or a loss adds the joker's elapsed time back to `started_at`.

@@ -1,7 +1,7 @@
 # @Author: Jonathan Serna
 # @Date:   2026-09-28 16:41:21
 # @Last Modified by:   Jonathan Serna
-# @Last Modified time: 2026-10-02 18:30:59
+# @Last Modified time: 2026-10-02 18:40:22
 
 """Render the Spanish interface for the math castle game."""
 
@@ -126,7 +126,9 @@ def render_wordle() -> None:
                 st.error(str(error))
             else:
                 st.rerun()
-        if st.button("Cancelar comodín y volver al castillo", key="cancel_wordle"):
+        if st.button(
+            "Cancelar comodín y volver al castillo", key="cancel_wordle"
+        ):
             return_from_wordle()
             st.rerun()
     else:
