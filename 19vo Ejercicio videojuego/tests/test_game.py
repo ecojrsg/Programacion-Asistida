@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Last Modified by:   Jonathan Serna
-# @Last Modified time: 2026-10-02 10:59:44
+# @Last Modified time: 2026-10-02 18:45:05
 
 """Check game rules and the Spanish Streamlit interface."""
 
@@ -294,6 +294,11 @@ def test_app_pet_offers() -> None:
     find_button(app, "Omitir").click().run()
     assert state["offers"]["jugar"]["status"] == "skipped"
     assert state["pet"]["happiness"] == 50
+    room_offers = {
+        action: offer.copy() for action, offer in state["offers"].items()
+    }
+    app.run()
+    assert state["offers"] == room_offers
     assert not app.exception
 
 

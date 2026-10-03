@@ -18,6 +18,10 @@ English.
 - Victory occurs after the last room; zero or negative health shows defeat.
 - Difficulty increases according to the room ranges in the exercise catalog.
 - Subtraction stays nonnegative, and division uses an integer quotient.
+- The pet starts with three meters at 100; clearing a room lowers each by 10.
+- Each room offers one randomized, priced item per pet action. A pending offer
+  can be bought once when affordable or skipped once; offers stay stable during
+  wrong answers, timeouts, and reruns in the same room.
 
 ## Editable Configuration
 
@@ -33,10 +37,12 @@ English.
 ## Existing File Responsibilities
 
 - `app.py`: `main()` loads configuration and routes the session. Small render
-  functions handle the welcome screen, timer, status, answer form, and controls.
+  functions handle the welcome screen, timer, status, pet offers, answer form,
+  and controls.
 - `game.py`: `Exercise` stores an exercise, `ExerciseGenerator` creates it,
-  and `new_game()`, `submit_answer()`, and `timeout()` update dictionary state.
-  The private `_start_turn()` helper replaces the exercise and resets its timer.
+  and `new_game()`, `submit_answer()`, and `timeout()` update dictionary state,
+  including pet meters and room offers. The private `_start_turn()` helper
+  replaces the exercise and resets its timer without changing pet state.
 - `tests/test_game.py`: focused regression checks for rules and interface flows.
 
 ## Run
@@ -59,7 +65,9 @@ uv run python -B -m tests.test_game
 
 The checks cover initial state, independent games, answer damage and rewards,
 timeouts, fatal damage, victory, difficulty boundaries, all four operations,
-and starting, answering, restarting, exiting, and ending a game in Streamlit.
+pet meters and purchases, stable room offers, and starting, answering,
+restarting, exiting, and ending a game in Streamlit. Pet and interface checks
+run as part of this same command.
 
 ## Possible Future Improvements
 

@@ -1,7 +1,7 @@
 # @Author: Jonathan Serna
 # @Date:   2026-09-28 16:41:21
 # @Last Modified by:   Jonathan Serna
-# @Last Modified time: 2026-10-02 11:20:46
+# @Last Modified time: 2026-10-02 18:45:05
 
 """Render the Spanish interface for the math castle game."""
 

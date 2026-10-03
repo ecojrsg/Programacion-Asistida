@@ -23,6 +23,8 @@ classDiagram
       +bool finished
       +Exercise exercise
       +float started_at
+      +dict pet
+      +dict offers
     }
     class GameRules {
       <<dictionary>>
@@ -43,11 +45,16 @@ sequenceDiagram
     participant U as Streamlit
     participant G as Game
     participant E as ExerciseGenerator
+    participant H as Pet helpers
     P->>U: Submit answer
     U->>G: submit_answer()
     G->>G: Compare answer
     alt Correct answer
+      G->>H: decay_pet(pet)
       G->>G: Award gold and advance room
+      opt More rooms remain
+        G->>H: new_room_offers()
+      end
     else Wrong answer
       G->>G: Deduct x health points
     end
@@ -64,5 +71,8 @@ sequenceDiagram
 
 For an expired timer, the interface calls `timeout()` instead of
 `submit_answer()`. It deducts `z` health points and starts another exercise
-only while health remains. The interface hides the answer form after defeat
-or victory and keeps the exit and restart controls available.
+only while health remains. Pet meters and offers stay unchanged on timeout or
+rerun. A purchase restores one meter, while clearing a room decays all meters
+and creates new offers when another room remains. The interface hides the
+answer form after defeat or victory and keeps the exit and restart controls
+available.
