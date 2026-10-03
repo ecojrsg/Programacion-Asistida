@@ -1,4 +1,7 @@
-# Diagramas de clases
+# Class and Interaction Diagrams
+
+`Exercise` and `ExerciseGenerator` are the only Python classes. `GameState`
+and `GameRules` below describe dictionary contents, not additional classes.
 
 ```mermaid
 classDiagram
@@ -13,38 +16,53 @@ classDiagram
       +generate(room) Exercise
     }
     class GameState {
-      room
-      health
-      gold
-      exercise
-      started_at
+      <<dictionary>>
+      +int room
+      +int health
+      +int gold
+      +bool finished
+      +Exercise exercise
+      +float started_at
     }
     class GameRules {
-      +n int
-      +x int
-      +z int
-      +rooms int
+      <<dictionary>>
+      +int n
+      +int x
+      +int z
+      +int starting_gold
+      +int rooms
     }
-    ExerciseGenerator ..> Exercise : genera
-    GameState o-- Exercise : contiene
-    GameState ..> GameRules : usa
+    ExerciseGenerator ..> Exercise : generates
+    GameState o-- Exercise : contains
+    GameState ..> GameRules : uses
 ```
 
 ```mermaid
 sequenceDiagram
-    participant J as Jugador
+    participant P as Player
     participant U as Streamlit
-    participant G as Juego
-    participant E as Generador
-    J->>U: Enviar respuesta
+    participant G as Game
+    participant E as ExerciseGenerator
+    P->>U: Submit answer
     U->>G: submit_answer()
-    G->>G: Validar respuesta
-    alt correcta
-      G->>E: Generar ejercicio de siguiente sala
-      E-->>G: Exercise
-    else incorrecta o tiempo agotado
-      G->>G: Restar x o z y reiniciar contador
-      G->>E: Generar nuevo ejercicio
+    G->>G: Compare answer
+    alt Correct answer
+      G->>G: Award gold and advance room
+    else Wrong answer
+      G->>G: Deduct x health points
     end
-    G-->>U: Estado actualizado
+    alt More rooms remain
+      G->>E: generate(current room)
+      E-->>G: Exercise
+      G->>G: Reset start time
+    else Last room completed
+      G->>G: Mark game finished
+    end
+    G-->>U: Correctness result and updated state
+    U-->>P: Updated game screen
 ```
+
+For an expired timer, the interface calls `timeout()` instead of
+`submit_answer()`. It deducts `z` health points and starts another exercise
+only while health remains. The interface hides the answer form after defeat
+or victory and keeps the exit and restart controls available.
