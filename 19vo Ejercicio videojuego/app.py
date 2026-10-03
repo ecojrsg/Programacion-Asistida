@@ -1,7 +1,7 @@
 # @Author: Jonathan Serna
 # @Date:   2026-09-28 16:41:21
 # @Last Modified by:   Jonathan Serna
-# @Last Modified time: 2026-10-02 11:20:46
+# @Last Modified time: 2026-10-02 18:42:46
 
 """Render the Spanish interface for the math castle game."""
 
@@ -10,6 +10,12 @@ import time
 import streamlit as st
 from streamlit_autorefresh import st_autorefresh
 
+from fog import (
+    SPIN_SECONDS,
+    check_room_event,
+    resolve_roulette,
+    start_roulette,
+)
 from game import ExerciseGenerator, load_json, new_game, submit_answer, timeout
 
 
@@ -51,6 +57,148 @@ def render_status(state: dict, settings: dict) -> None:
         for room in range(1, settings["rooms"] + 1)
     ]
     st.write(" → ".join(rooms))
+    notice = state.get("fog_notice")
+    if notice and notice["room"] == state["room"] - 1:
+        st.success(
+            f"🌫️ La ruleta eligió **Pase libre**: habitación {notice['room']} "
+            "despejada, sin oro de combate."
+        )
+
+
+def render_fog_event(state: dict, event: dict) -> None:
+    """Show the current fog event and its roulette animation."""
+    room = state["room"]
+    if event["status"] == "offered":
+        st.markdown(
+            """
+            <div
+              style="padding:1.25rem;border-radius:1rem;
+              border:1px solid #8b5cf6;
+              background:linear-gradient(135deg,#20133f,#10253b);
+              box-shadow:0 0 28px #8b5cf644;">
+              <div
+                style="font-size:.8rem;letter-spacing:.18em;color:#c4b5fd;
+                font-weight:700">EVENTO DE NIEBLA</div>
+              <div style="font-size:1.4rem;font-weight:800;margin:.35rem 0">
+                La niebla oculta el destino de esta sala.
+              </div>
+              <div style="color:#d1d5db">
+                Una ruleta decidirá entre <b>🌟 Pase libre</b> y
+                <b>⚔️ Enemigo</b>.
+              </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        if st.button(
+            "🎲 Iniciar ruleta", type="primary", key=f"start-fog-{room}"
+        ):
+            start_roulette(state, room)
+            st.rerun()
+    elif event["status"] == "spinning":
+        elapsed = time.time() - event["started_at"]
+        phase = int(elapsed * 16) % 2
+        progress = min(100, int(elapsed / SPIN_SECONDS * 100))
+        active_pass = "active" if phase == 0 else ""
+        active_enemy = "active" if phase == 1 else ""
+        st.markdown(
+            f"""
+            <style>
+              @keyframes fog-glow {{
+                0%,100% {{ filter:drop-shadow(0 0 8px #a78bfa); }}
+                50% {{ filter:drop-shadow(0 0 24px #38bdf8); }}
+              }}
+              @keyframes fog-ring {{
+                from {{ transform:rotate(0deg); }}
+                to {{ transform:rotate(360deg); }}
+              }}
+              .fog-roulette {{
+                position:relative; overflow:hidden; padding:1.4rem;
+                border-radius:1.2rem; border:1px solid #7c3aed;
+                background:radial-gradient(
+                  circle at 50% 45%,#31205c,#101827 72%
+                );
+                color:white; text-align:center; box-shadow:0 0 35px #7c3aed55;
+              }}
+              .fog-ring {{
+                position:absolute; inset:-45%; border:2px dashed #a78bfa55;
+                border-radius:50%; animation:fog-ring 4s linear infinite;
+                pointer-events:none;
+              }}
+              .fog-title {{
+                position:relative; color:#c4b5fd; font-size:.82rem;
+                letter-spacing:.2em; font-weight:800;
+              }}
+              .fog-options {{
+                position:relative; display:flex; align-items:center;
+                justify-content:center; gap:.75rem; margin:1.25rem auto;
+                max-width:38rem;
+              }}
+              .fog-option {{
+                flex:1; padding:1.1rem .6rem; border:1px solid #64748b;
+                border-radius:1rem; background:#111827cc; color:#cbd5e1;
+                font-size:1.15rem; font-weight:800; opacity:.55;
+                transform:scale(.94);
+              }}
+              .fog-option.active {{
+                opacity:1; transform:scale(1.04);
+                animation:fog-glow .65s ease-in-out infinite;
+                border-color:#c4b5fd; background:#33245dcc;
+              }}
+              .fog-center {{
+                color:#e9d5ff; font-size:2rem;
+                animation:fog-glow .8s ease-in-out infinite;
+              }}
+              .fog-track {{
+                position:relative; height:.45rem; overflow:hidden;
+                border-radius:99px; background:#334155;
+              }}
+              .fog-track span {{
+                display:block; width:100%; height:100%; border-radius:99px;
+                background:linear-gradient(90deg,#a855f7,#38bdf8);
+                transform-origin:left; transition:transform .1s linear;
+              }}
+              .fog-caption {{
+                position:relative; margin-top:.7rem; color:#cbd5e1;
+              }}
+              @media (prefers-reduced-motion: reduce) {{
+                .fog-ring, .fog-option.active, .fog-center {{
+                  animation:none;
+                }}
+                .fog-option, .fog-option.active {{
+                  opacity:1; transform:none; border-color:#64748b;
+                  background:#111827cc;
+                }}
+                .fog-track span {{ transition:none; }}
+              }}
+            </style>
+            <div class="fog-roulette" role="status"
+              aria-label="Ruleta de niebla en curso">
+              <div class="fog-ring"></div>
+              <div class="fog-title">🌫️ RULETA DE LA NIEBLA 🌫️</div>
+              <div class="fog-options">
+                <div class="fog-option {active_pass}">🌟 Pase libre</div>
+                <div class="fog-center">◈</div>
+                <div class="fog-option {active_enemy}">⚔️ Enemigo</div>
+              </div>
+              <div class="fog-track" role="progressbar"
+                aria-label="Progreso de la ruleta" aria-valuemin="0"
+                aria-valuemax="100" aria-valuenow="{progress}">
+                <span style="transform:scaleX({progress / 100:.3f})"></span>
+              </div>
+              <div class="fog-caption">
+                El destino de la habitación se está revelando…
+              </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        st_autorefresh(interval=100, key=f"fog-roulette-{room}")
+    elif event["status"] == "enemy":
+        st.warning(
+            f"🌫️ La ruleta eligió **Enemigo** en la habitación {room}. "
+            "¡Resuelve la operación para avanzar!"
+        )
 
 
 def render_round(
@@ -71,7 +219,9 @@ def render_round(
         if submit_answer(state, int(answer), settings, generator):
             st.success("¡Correcto! Enemigo derrotado.")
         else:
-            st.error(f"Respuesta incorrecta. Pierdes {settings['x']} de vida.")
+            st.error(
+                f"Respuesta incorrecta. Pierdes {settings['x']} de vida."
+            )
         st.rerun()
 
 
@@ -92,16 +242,33 @@ def render_game(
     state: dict, settings: dict, generator: ExerciseGenerator
 ) -> None:
     """Render the current game, including active and finished states."""
-    remaining = 0
+    event = None
+    pause_timer = False
     if not state["finished"] and state["health"] > 0:
+        event = check_room_event(state, state["room"])
+        if event["status"] == "spinning":
+            result = resolve_roulette(
+                state, state["room"], settings, generator
+            )
+            if result is not None:
+                st.rerun()
+            pause_timer = True
+        else:
+            pause_timer = event["status"] == "offered"
+
+    remaining = 0
+    if not state["finished"] and state["health"] > 0 and not pause_timer:
         remaining = refresh_timer(state, settings, generator)
     render_status(state, settings)
     if state["finished"]:
         st.success(f"¡Victoria! Reuniste {state['gold']} monedas.")
     elif state["health"] <= 0:
         st.error("Has quedado sin vida. El castillo te derrotó.")
-    elif remaining > 0:
-        render_round(state, settings, generator, remaining)
+    else:
+        if event is not None:
+            render_fog_event(state, event)
+        if remaining > 0:
+            render_round(state, settings, generator, remaining)
     render_controls(settings, generator)
 
 

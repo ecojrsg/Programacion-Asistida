@@ -18,6 +18,10 @@ English.
 - Victory occurs after the last room; zero or negative health shows defeat.
 - Difficulty increases according to the room ranges in the exercise catalog.
 - Subtraction stays nonnegative, and division uses an integer quotient.
+- Each room receives one 1-in-3 fog-event roll, stored in the current game
+  state.
+- An offered or spinning roulette pauses the combat timer. A free pass advances
+  one room without combat gold; an enemy starts the normal timed math round.
 
 ## Editable Configuration
 
@@ -33,11 +37,18 @@ English.
 ## Existing File Responsibilities
 
 - `app.py`: `main()` loads configuration and routes the session. Small render
-  functions handle the welcome screen, timer, status, answer form, and controls.
+  functions handle the welcome screen, timer, fog event, status, answer form,
+  and controls.
 - `game.py`: `Exercise` stores an exercise, `ExerciseGenerator` creates it,
   and `new_game()`, `submit_answer()`, and `timeout()` update dictionary state.
-  The private `_start_turn()` helper replaces the exercise and resets its timer.
-- `tests/test_game.py`: focused regression checks for rules and interface flows.
+  The private `_start_turn()` helper replaces the exercise and resets its
+  timer.
+- `fog.py`: roll and cache each room's event, then start and resolve its
+  roulette.
+- `tests/test_game.py`: standard-library regression checks for game rules and
+  Streamlit interface flows, including both fog outcomes.
+- `tests/test_fog.py`: standard-library checks for the fog chance and state
+  rules.
 
 ## Run
 
@@ -55,11 +66,14 @@ additional test runner is not required:
 
 ```bash
 uv run python -B -m tests.test_game
+uv run python -B -m tests.test_fog
 ```
 
 The checks cover initial state, independent games, answer damage and rewards,
 timeouts, fatal damage, victory, difficulty boundaries, all four operations,
 and starting, answering, restarting, exiting, and ending a game in Streamlit.
+Fog checks cover its one-in-three room roll, persistent roulette result, paused
+timer, no-gold pass, and normal enemy encounter.
 
 ## Possible Future Improvements
 

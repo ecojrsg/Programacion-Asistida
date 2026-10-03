@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # @Last Modified by:   Jonathan Serna
-# @Last Modified time: 2026-10-02 10:59:44
+# @Last Modified time: 2026-10-02 18:43:17
 
 """Check game rules and the Spanish Streamlit interface."""
 
@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 from streamlit.testing.v1 import AppTest
 
+from fog import ENEMY, PASS, SPIN_SECONDS
 from game import ExerciseGenerator, load_json, new_game, submit_answer, timeout
 
 
@@ -26,6 +27,31 @@ CATALOG = {
     ]
 }
 APP_PATH = Path(__file__).resolve().parents[1] / "app.py"
+
+
+def _app_with_game() -> tuple[AppTest, dict]:
+    """Return a game with fog disabled in each configured room."""
+    app = AppTest.from_file(APP_PATH, default_timeout=10).run()
+    app.button[0].click().run()
+    state = app.session_state["game"]
+    settings = load_json("config/settings.json")
+    state["fog_events"] = {
+        str(room): {"status": "none"}
+        for room in range(1, settings["rooms"] + 1)
+    }
+    app.run()
+    assert not app.exception
+    return app, state
+
+
+def _app_with_fog_offer() -> tuple[AppTest, dict]:
+    """Return a game whose current room has an expired offered event."""
+    app, state = _app_with_game()
+    state["fog_events"]["1"] = {"status": "offered"}
+    state["started_at"] -= state["exercise"].time_seconds + 1
+    app.run()
+    assert not app.exception
+    return app, state
 
 
 def test_load_json() -> None:
@@ -171,33 +197,32 @@ def test_generated_operations() -> None:
 def test_app_answers() -> None:
     """Submit correct and incorrect answers through the Spanish form."""
     settings = load_json("config/settings.json")
-    app = AppTest.from_file(APP_PATH, default_timeout=10).run()
+    app, state = _app_with_game()
     assert app.title[0].value == "🏰 Castillo Matemático"
+    app.number_input[0].set_value(state["exercise"].answer)
     app.button[0].click().run()
-    app.number_input[0].set_value(app.session_state["game"]["exercise"].answer)
-    app.button[0].click().run()
-    assert app.session_state["game"]["room"] == 2
-    assert app.session_state["game"]["gold"] == settings["starting_gold"] + 10
+    assert state["room"] == 2
+    assert state["gold"] == settings["starting_gold"] + 10
     app.number_input[0].set_value(
-        app.session_state["game"]["exercise"].answer + 1
+        state["exercise"].answer + 1
     )
     app.button[0].click().run()
-    assert app.session_state["game"]["health"] == settings["n"] - settings["x"]
-    assert app.session_state["game"]["room"] == 2
+    assert state["health"] == settings["n"] - settings["x"]
+    assert state["room"] == 2
     assert not app.exception
 
 
 def test_app_controls() -> None:
     """Restart a changed game and then return to the welcome screen."""
     settings = load_json("config/settings.json")
-    app = AppTest.from_file(APP_PATH, default_timeout=10).run()
-    app.button[0].click().run()
-    app.session_state["game"]["health"] = 1
-    app.session_state["game"]["gold"] = 80
+    app, state = _app_with_game()
+    state["health"] = 1
+    state["gold"] = 80
     app.button[2].click().run()
-    assert app.session_state["game"]["health"] == settings["n"]
-    assert app.session_state["game"]["gold"] == settings["starting_gold"]
-    assert app.session_state["game"]["room"] == 1
+    state = app.session_state["game"]
+    assert state["health"] == settings["n"]
+    assert state["gold"] == settings["starting_gold"]
+    assert state["room"] == 1
     app.button[1].click().run()
     assert app.session_state["game"] is None
     assert app.button[0].label == "Comenzar partida"
@@ -207,9 +232,7 @@ def test_app_controls() -> None:
 def test_app_timeout() -> None:
     """Apply expired-turn damage until the interface shows defeat."""
     settings = load_json("config/settings.json")
-    app = AppTest.from_file(APP_PATH, default_timeout=10).run()
-    app.button[0].click().run()
-    state = app.session_state["game"]
+    app, state = _app_with_game()
     state["started_at"] -= state["exercise"].time_seconds + 1
     app.run()
     assert state["health"] == settings["n"] - settings["z"]
@@ -228,9 +251,7 @@ def test_app_timeout() -> None:
 def test_app_end_states() -> None:
     """Render defeat and victory without showing an answer form."""
     settings = load_json("config/settings.json")
-    app = AppTest.from_file(APP_PATH, default_timeout=10).run()
-    app.button[0].click().run()
-    state = app.session_state["game"]
+    app, state = _app_with_game()
     state["health"] = 0
     app.run()
     assert app.error[0].value == (
@@ -245,6 +266,69 @@ def test_app_end_states() -> None:
         f"¡Victoria! Reuniste {state['gold']} monedas."
     )
     assert not app.number_input
+    assert not app.exception
+
+
+def test_app_fog_pass() -> None:
+    """Pause the timer during fog and pass one room without combat gold."""
+    app, state = _app_with_fog_offer()
+    assert state["health"] == SETTINGS["n"]
+    assert state["room"] == 1
+    assert not app.number_input
+    assert any("EVENTO DE NIEBLA" in item.value for item in app.markdown)
+
+    with patch("fog.random.choice", return_value=PASS):
+        next(
+            button
+            for button in app.button
+            if button.label == "🎲 Iniciar ruleta"
+        ).click().run()
+    event = state["fog_events"]["1"]
+    assert event["status"] == "spinning"
+    app.run()
+    assert event["status"] == "spinning"
+    assert state["health"] == SETTINGS["n"]
+    assert not app.number_input
+    assert any(
+        "fog-roulette" in item.value
+        and "🌟 Pase libre" in item.value
+        and "⚔️ Enemigo" in item.value
+        and "@keyframes fog-ring" in item.value
+        for item in app.markdown
+    )
+
+    event["started_at"] -= SPIN_SECONDS + 1
+    state["fog_events"]["2"] = {"status": "none"}
+    app.run()
+    assert state["fog_events"]["1"]["status"] == "passed"
+    assert state["room"] == 2
+    assert state["gold"] == SETTINGS["starting_gold"]
+    assert any("Pase libre" in item.value for item in app.success)
+    assert not app.exception
+
+
+def test_app_fog_enemy() -> None:
+    """Start the regular timed math encounter after the enemy result."""
+    app, state = _app_with_fog_offer()
+    exercise = state["exercise"]
+    with patch("fog.random.choice", return_value=ENEMY):
+        next(
+            button
+            for button in app.button
+            if button.label == "🎲 Iniciar ruleta"
+        ).click().run()
+
+    event = state["fog_events"]["1"]
+    assert event["status"] == "spinning"
+    event["started_at"] -= SPIN_SECONDS + 1
+    app.run()
+
+    assert event["status"] == "enemy"
+    assert state["room"] == 1
+    assert state["exercise"] is exercise
+    assert state["health"] == SETTINGS["n"]
+    assert app.number_input
+    assert any("eligió **Enemigo**" in item.value for item in app.warning)
     assert not app.exception
 
 
@@ -265,6 +349,8 @@ def main() -> None:
         test_app_controls,
         test_app_timeout,
         test_app_end_states,
+        test_app_fog_pass,
+        test_app_fog_enemy,
     )
     for check in checks:
         check()

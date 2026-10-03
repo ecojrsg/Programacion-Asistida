@@ -123,3 +123,21 @@ def test_enemy_result_starts_normal_room_encounter_without_advancing():
     assert state["gold"] == 20
     assert state["started_at"] == resolved_at
     assert generator.rooms == []
+
+
+def main() -> None:
+    """Run fog rules checks without an external test runner."""
+    checks = (
+        test_fog_chance_is_one_in_three_and_event_is_rolled_once_per_room,
+        test_roulette_outcome_survives_reruns_without_rerolling,
+        test_pass_advances_exactly_one_room_without_combat_gold,
+        test_pass_from_final_room_finishes_the_game,
+        test_enemy_result_starts_normal_room_encounter_without_advancing,
+    )
+    for check in checks:
+        check()
+    print(f"{len(checks)} fog logic checks passed.")
+
+
+if __name__ == "__main__":
+    main()
