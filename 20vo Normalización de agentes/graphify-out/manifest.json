@@ -1,0 +1,56 @@
+{
+  "app.py": {
+    "mtime": 1790961646.702419,
+    "seen": 1791238987.298573,
+    "ast_hash": "562c82cd982b559e2e626d029c03bf02",
+    "semantic_hash": "562c82cd982b559e2e626d029c03bf02"
+  },
+  "config/exercises.json": {
+    "mtime": 1790635665.4311256,
+    "seen": 1791238987.2985759,
+    "ast_hash": "efe1ba4c8b9359f0cdc9aa203fb23184",
+    "semantic_hash": "efe1ba4c8b9359f0cdc9aa203fb23184"
+  },
+  "config/settings.json": {
+    "mtime": 1790635281.428326,
+    "seen": 1791238987.2985768,
+    "ast_hash": "973ec2382d5f2be0868677a1fdc060d3",
+    "semantic_hash": "973ec2382d5f2be0868677a1fdc060d3"
+  },
+  "game.py": {
+    "mtime": 1790961656.645722,
+    "seen": 1791238987.298578,
+    "ast_hash": "dbeafb1f66a7a8302a75b2ab0f28e674",
+    "semantic_hash": "dbeafb1f66a7a8302a75b2ab0f28e674"
+  },
+  "pyproject.toml": {
+    "mtime": 1790959958.2269537,
+    "seen": 1791238987.298578,
+    "ast_hash": "193dfa7aef9335542f7b4b61355acac9",
+    "semantic_hash": "193dfa7aef9335542f7b4b61355acac9"
+  },
+  "tests/test_game.py": {
+    "mtime": 1790960421.0306609,
+    "seen": 1791238987.298579,
+    "ast_hash": "1e1625252094dadc9f7fb6bf2cb3861b",
+    "semantic_hash": "1e1625252094dadc9f7fb6bf2cb3861b"
+  },
+  "AGENTS.md": {
+    "mtime": 1791238744.8334618,
+    "seen": 1791238987.29858,
+    "ast_hash": "dd27c6e7bd1bde56a1a1b3aa4d61ab43",
+    "semantic_hash": "dd27c6e7bd1bde56a1a1b3aa4d61ab43"
+  },
+  "docs/CLASS_DIAGRAM.md": {
+    "mtime": 1790959958.227133,
+    "seen": 1791238987.29858,
+    "ast_hash": "38fbe47ec1df02851f63c4f65fe9ba17",
+    "semantic_hash": "38fbe47ec1df02851f63c4f65fe9ba17"
+  },
+  "docs/PLAN.md": {
+    "mtime": 1790959958.2270496,
+    "seen": 1791238987.298581,
+    "ast_hash": "2f5e3d0b03e346ff8d30b48aacffdac4",
+    "semantic_hash": "2f5e3d0b03e346ff8d30b48aacffdac4"
+  }
+}
