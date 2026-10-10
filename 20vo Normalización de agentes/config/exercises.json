@@ -1,0 +1,7 @@
+{
+  "difficulties": [
+    {"name": "facil", "max_room": 3, "operations": ["sum", "subtraction"], "min": 1, "max": 20, "time_seconds": 20},
+    {"name": "media", "max_room": 6, "operations": ["sum", "subtraction", "multiplication"], "min": 5, "max": 50, "time_seconds": 25},
+    {"name": "dificil", "max_room": 9, "operations": ["multiplication", "division"], "min": 10, "max": 100, "time_seconds": 30}
+  ]
+}
