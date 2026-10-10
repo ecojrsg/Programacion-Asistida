@@ -1,0 +1,9 @@
+[project]
+name = "finanzapp"
+version = "0.1.0"
+description = "Personal expense tracking for university coursework."
+authors = [{ name = "Jonathan Serna" }]
+requires-python = ">=3.14"
+dependencies = [
+    "streamlit>=1.65.0",
+]
