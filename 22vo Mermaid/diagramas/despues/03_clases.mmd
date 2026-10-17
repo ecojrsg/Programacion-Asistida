@@ -1,0 +1,48 @@
+classDiagram
+    direction TB
+    class User {
+        +int id
+        +string name
+        +int absenceCount
+        +datetime blockedUntil
+        +isBlocked(now) bool
+    }
+    class Administrator {
+        +int id
+        +string name
+    }
+    class Equipment {
+        +int id
+        +string name
+        +bool enabled
+    }
+    class Reservation {
+        +int id
+        +datetime start
+        +datetime end
+        +ReservationStatus status
+    }
+    class ReservationStatus {
+        <<enumeration>>
+        PENDING
+        APPROVED
+        REJECTED
+        CANCELLED
+        COMPLETED
+        NO_SHOW
+    }
+    class ReservationService {
+        +request(user, equipment, start) Reservation
+        +approve(admin, reservation, now)
+        +reject(admin, reservation)
+        +cancel(owner, reservation, now)
+        +close(admin, reservation, attended, now)
+    }
+    User "1" --> "0..*" Reservation : solicita
+    Equipment "1" --> "0..*" Reservation : recibe en distintos horarios
+    Administrator "0..1" --> "0..*" Reservation : decide
+    Reservation --> ReservationStatus : estado
+    ReservationService ..> Reservation : valida y cambia estado
+    note for Reservation "end = start + 1 h; inicio futuro.<br/>Intervalo [start, end); sin cruce de aprobadas por equipo.<br/>Cancelar propia PENDING o APPROVED<br/>si now <= start - 24 h."
+    note for User "blockedUntil puede ser nulo.<br/>Bloqueado si now < blockedUntil.<br/>Tercera falta: bloquear 30 días desde now<br/>y poner absenceCount = 0."
+    note for ReservationService "Sesión y rol verificados en cada operación.<br/>Aprobar: revalidar usuario, equipo, estado y horario;<br/>comprobar y guardar de forma atómica.<br/>Cerrar una vez: APPROVED y now >= end."

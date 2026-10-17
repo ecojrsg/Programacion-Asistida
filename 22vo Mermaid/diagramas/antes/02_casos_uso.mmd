@@ -1,0 +1,15 @@
+usecase-beta
+direction LR
+actor User("Usuario")
+actor Admin("Administrador")
+systemBoundary Lab["Sistema de reservas de laboratorio"]
+    Browse("Consultar equipos")
+    Request("Solicitar reserva de una hora")
+    View("Consultar mis reservas")
+    Approve("Aprobar reserva")
+end
+User -- Browse
+User -- Request
+User -- View
+User -- Approve
+Admin -- Approve

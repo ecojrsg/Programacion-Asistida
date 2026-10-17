@@ -1,0 +1,37 @@
+---
+config:
+  layout: elk
+---
+usecase-beta
+direction LR
+actor User("Usuario")
+actor Admin("Administrador")
+systemBoundary Lab["Sistema de reservas de laboratorio"]
+    Browse("Consultar disponibilidad")
+    Request("Solicitar reserva de una hora")
+    ValidateRequest("Validar usuario habilitado, inicio futuro y equipo libre")
+    View("Consultar mis reservas")
+    Cancel("Cancelar reserva propia")
+    ValidateCancel("Validar pendiente o aprobada y plazo mínimo de 24 h")
+    Approve("Aprobar reserva pendiente")
+    ValidateApproval("Revalidar condiciones y guardar atómicamente")
+    Reject("Rechazar reserva pendiente")
+    Attendance("Registrar asistencia al terminar")
+    Absence("Registrar falta de aprobada una sola vez")
+    Block("Bloquear 30 días al acumular 3 faltas y reiniciar contador")
+end
+User -- Browse
+User -- Request
+User -- View
+User -- Cancel
+Admin -- Approve
+Admin -- Reject
+Admin -- Attendance
+Request ..> : include ValidateRequest
+Cancel ..> : include ValidateCancel
+Approve ..> : include ValidateApproval
+Absence ..> : extend Attendance
+Block ..> : extend Absence
+%% ValidateRequest also checks equipment enabled and conflicts with approved slots.
+%% ValidateApproval repeats all request guards while the reservation is pending.
+%% Absence extends Attendance only if the user did not attend.

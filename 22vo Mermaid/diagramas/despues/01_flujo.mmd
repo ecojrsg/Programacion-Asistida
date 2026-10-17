@@ -1,0 +1,39 @@
+flowchart LR
+    subgraph Request["1. Solicitud del usuario"]
+        direction TB
+        R0([Solicitar reserva]) --> R1{"¿Sesión válida y<br/>sin bloqueo vigente?"}
+        R1 -->|No| R2[Denegar solicitud]
+        R1 -->|Sí| R3[Elegir equipo e inicio futuro<br/>Fin = inicio + 1 hora]
+        R3 --> R4{"¿Equipo habilitado y<br/>sin cruce con aprobadas?"}
+        R4 -->|No| R5[Informar indisponibilidad]
+        R4 -->|Sí| R6[Guardar PENDIENTE<br/>Avisar al administrador]
+    end
+    subgraph Review["2. Decisión del administrador"]
+        direction TB
+        A0([Admin autenticado:<br/>seleccionar pendiente]) --> A1{¿Aprobar?}
+        A1 -->|No| A2[RECHAZADA y notificar]
+        A1 -->|Sí| A3{"Revalidar al guardar:<br/>sigue pendiente, inicio futuro,<br/>usuario sin bloqueo,<br/>equipo habilitado y sin cruce"}
+        A3 -->|Sí| A4[APROBADA y notificar<br/>Ocupar intervalo de forma atómica]
+        A3 -->|No| A5[No aprobar y notificar<br/>Si sigue pendiente, rechazar]
+    end
+    subgraph Cancel["3. Cancelación por el propietario"]
+        direction TB
+        C0([Usuario autenticado:<br/>cancelar reserva propia]) --> C1{"¿PENDIENTE o APROBADA<br/>y faltan al menos 24 horas?"}
+        C1 -->|Sí| C2[CANCELADA y notificar<br/>Liberar intervalo si estaba aprobado]
+        C1 -->|No| C3[Denegar cancelación<br/>Conservar estado]
+    end
+    subgraph Attendance["4. Cierre y bloqueo"]
+        direction TB
+        T0([Admin autenticado:<br/>al terminar la hora]) --> T1{"¿APROBADA y<br/>aún sin cierre?"}
+        T1 -->|No| T2[No registrar asistencia<br/>ni duplicar inasistencias]
+        T1 -->|Sí| T3{¿El usuario asistió?}
+        T3 -->|Sí| T4[COMPLETADA]
+        T3 -->|No| T5[INASISTENCIA<br/>Sumar una al contador]
+        T5 --> T6{¿Contador = 3?}
+        T6 -->|No| T7[Conservar contador]
+        T6 -->|Sí| T8[Bloquear por 30 días desde el registro<br/>Reiniciar contador a 0 y notificar]
+    end
+    %% Invisible links only arrange the four independent entry points.
+    Request ~~~ Review
+    Review ~~~ Cancel
+    Cancel ~~~ Attendance

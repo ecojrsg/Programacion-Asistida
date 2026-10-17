@@ -1,0 +1,11 @@
+flowchart TD
+    Start([Inicio]) --> Login[Iniciar sesión]
+    Login --> Select[Elegir equipo y horario]
+    Select --> Request[Solicitar reserva de una hora]
+    Request --> Pending[Guardar como pendiente]
+    Pending --> Review{¿El administrador aprueba?}
+    Review -->|Sí| Approved[Marcar como aprobada]
+    Review -->|No| Rejected[Marcar como rechazada]
+    Approved --> Use[Usar el equipo]
+    Use --> Finish([Fin])
+    Rejected --> Finish

@@ -1,0 +1,25 @@
+classDiagram
+    class User {
+        +int id
+        +string name
+        +requestReservation()
+    }
+    class Administrator {
+        +int id
+        +string name
+        +approveReservation()
+    }
+    class Equipment {
+        +int id
+        +string name
+        +bool available
+    }
+    class Reservation {
+        +int id
+        +datetime start
+        +datetime end
+        +string status
+    }
+    User --> Reservation : solicita
+    Administrator --> Reservation : aprueba
+    Reservation --> Equipment : utiliza
