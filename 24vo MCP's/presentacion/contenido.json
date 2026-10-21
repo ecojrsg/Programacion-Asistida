@@ -1,0 +1,190 @@
+[
+  {
+    "title": "24. MCP en\nOpenCode",
+    "image": "general",
+    "cover": true,
+    "body": "Jonathan Ricardo Serna Galina\n20074902\n\nProgramación Asistida\n21 de octubre de 2026",
+    "notes": "Portada con la identificación del PDF de referencia. Las imágenes son ilustraciones conceptuales generadas con IA."
+  },
+  {
+    "title": "Qué entiendo por MCP",
+    "image": "general",
+    "sections": [
+      [
+        "LA CONEXIÓN",
+        "Un MCP permite que mi agente use herramientas externas. OpenCode funciona como cliente."
+      ],
+      [
+        "LAS HERRAMIENTAS",
+        "Context7 consulta documentación.\nPlaywright interactúa con páginas web.\nDocker Gateway organiza servidores."
+      ]
+    ],
+    "source": "Fuente: documentación MCP de OpenCode",
+    "notes": "Fuente: https://opencode.ai/v2/docs/mcp-servers/ . Definición simplificada para exposición universitaria."
+  },
+  {
+    "title": "Context7",
+    "image": "context7",
+    "sections": [
+      [
+        "PARA QUÉ LO USO",
+        "Busco documentación de bibliotecas antes de pedir una solución al agente."
+      ],
+      [
+        "AUTOR E INSTALACIÓN",
+        "Upstash. Configuro un servidor remoto:\nhttps://mcp.context7.com/mcp"
+      ],
+      [
+        "MI EJEMPLO",
+        "Consulté cómo configurar MCP en OpenCode v2."
+      ]
+    ],
+    "source": "Fuentes: Upstash y OpenCode",
+    "notes": "Fuentes: https://github.com/upstash/context7 y https://opencode.ai/v2/docs/mcp-servers/ . Instalación local preparada en 24vo MCP's/opencode.json."
+  },
+  {
+    "title": "Mi prueba con Context7",
+    "image": "context7",
+    "sections": [
+      [
+        "1. BUSQUÉ LA BIBLIOTECA",
+        "resolve-library-id\nSeleccioné /anomalyco/opencode."
+      ],
+      [
+        "2. CONSULTÉ LOS DOCUMENTOS",
+        "query-docs\nRecibí ejemplos y enlaces de referencia."
+      ],
+      [
+        "3. REVISÉ EL RESULTADO",
+        "Contrasté v1 y v2. Elegí mcp.servers\npara OpenCode v2.0.23."
+      ]
+    ],
+    "source": "Evidencia: 04-evidencia-context7.md",
+    "notes": "Fuente local: 24vo MCP's/04-evidencia-context7.md. Consulta real mediante el conector de esta conversación. Esto no acredita una llamada funcional desde la CLI local de OpenCode."
+  },
+  {
+    "title": "Playwright MCP",
+    "image": "playwright",
+    "sections": [
+      [
+        "PARA QUÉ LO USARÍA",
+        "Abriría una web e inspeccionaría sus elementos con ayuda del agente."
+      ],
+      [
+        "AUTOR E INSTALACIÓN",
+        "Microsoft. Proceso local con Node.js:\nnpx -y @playwright/mcp@latest --isolated"
+      ],
+      [
+        "MI PRUEBA PROPUESTA",
+        "Abrir example.com y leer su encabezado.\nTodavía no ejecuté esta prueba."
+      ]
+    ],
+    "source": "Fuente: microsoft/playwright-mcp",
+    "notes": "Fuente: https://github.com/microsoft/playwright-mcp . Requiere Node.js 18 o superior y navegador compatible. @latest puede variar, fijar una versión después de verificarla. --isolated guarda el perfil en memoria, sin convertirlo en una frontera de seguridad."
+  },
+  {
+    "title": "Docker MCP Gateway",
+    "image": "docker",
+    "sections": [
+      [
+        "PARA QUÉ LO USARÍA",
+        "Conectaría OpenCode con los servidores habilitados en mi perfil de Docker."
+      ],
+      [
+        "AUTOR E INSTALACIÓN",
+        "Docker. Habilito MCP Toolkit en Desktop.\nInicio el proceso local:\ndocker mcp gateway run"
+      ],
+      [
+        "MI PRUEBA PROPUESTA",
+        "Consultaría Context7 mediante el Gateway.\nEsta ruta todavía está pendiente."
+      ]
+    ],
+    "source": "Fuente: documentación de Docker MCP Toolkit",
+    "notes": "Fuentes: https://docs.docker.com/ai/mcp-catalog-and-toolkit/get-started/ y https://docs.docker.com/ai/mcp-catalog-and-toolkit/mcp-gateway/ . La función concreta depende de cada servidor; sus autores pueden ser distintos de Docker."
+  },
+  {
+    "title": "Cómo los conectaría",
+    "image": "general",
+    "sections": [
+      [
+        "MI VERSIÓN",
+        "OpenCode v2.0.23"
+      ],
+      [
+        "CONFIGURACIÓN LOCAL",
+        "En opencode.json uso mcp.servers.\nContext7 usa type: remote.\nPlaywright y Docker usan type: local."
+      ],
+      [
+        "COMPROBACIÓN",
+        "Ejecuto opencode mcp list.\nDespués hago una llamada real a una herramienta."
+      ]
+    ],
+    "source": "Fuente: documentación oficial de OpenCode v2",
+    "notes": "Fuente: https://opencode.ai/v2/docs/mcp-servers/ . En v1 la estructura difiere. La guía de cada MCP incluye los comandos y argumentos exactos. No se modificó configuración global."
+  },
+  {
+    "title": "Qué revisé de seguridad",
+    "image": "general",
+    "sections": [
+      [
+        "CONTEXT7",
+        "Upstash publica prácticas de protección de datos y claves. Evito enviar secretos."
+      ],
+      [
+        "PLAYWRIGHT",
+        "Microsoft publica cómo reportar fallos.\nUso un perfil separado del personal."
+      ],
+      [
+        "DOCKER",
+        "Docker documenta firmas y procedencia.\nLimito servidores y permisos habilitados."
+      ]
+    ],
+    "source": "Estas evidencias no garantizan ausencia de fallos",
+    "notes": "Fuentes: https://context7.com/docs/security/overview ; https://github.com/microsoft/playwright-mcp/blob/main/SECURITY.md ; https://docs.docker.com/ai/mcp-catalog-and-toolkit/faqs/ . No realicé una auditoría independiente. Playwright declara que no constituye una frontera de seguridad."
+  },
+  {
+    "title": "Mi resultado y lo pendiente",
+    "image": "general",
+    "sections": [
+      [
+        "LO QUE COMPROBÉ",
+        "Consulté Context7 desde el conector.\nPreparé el JSON local de OpenCode v2."
+      ],
+      [
+        "EL LÍMITE DEL ENSAYO",
+        "La CLI falló al iniciar su servicio local.\nNo confirmé la conexión desde OpenCode."
+      ],
+      [
+        "PARA COMPLETAR EN EQUIPO",
+        "Cada integrante debe conectar el MCP,\nprobar una herramienta y guardar evidencia."
+      ]
+    ],
+    "source": "No ejecuté las pruebas de Playwright ni Docker Gateway",
+    "notes": "Fuente local: 24vo MCP's/04-evidencia-context7.md . Error observado: el servicio gestionado no pudo iniciar en 127.0.0.1:49374; no se verificó de forma independiente si el puerto estaba ocupado. No atribuir instalaciones a otros integrantes."
+  },
+  {
+    "title": "Fuentes que consulté",
+    "image": "general",
+    "references": true,
+    "sections": [
+      [
+        "OPENCODE",
+        "opencode.ai/v2/docs/mcp-servers/"
+      ],
+      [
+        "CONTEXT7",
+        "github.com/upstash/context7\ncontext7.com/docs/security/overview"
+      ],
+      [
+        "PLAYWRIGHT",
+        "github.com/microsoft/playwright-mcp"
+      ],
+      [
+        "DOCKER",
+        "docs.docker.com/ai/mcp-catalog-and-toolkit/"
+      ]
+    ],
+    "source": "Ilustraciones conceptuales creadas con IA",
+    "notes": "Fuentes completas en los Markdown 01-context7.md, 02-playwright.md y 03-docker.md. También se usó 04-evidencia-context7.md. Imágenes generadas con imagegen; prompts y archivos en 24vo MCP's/presentacion/assets/."
+  }
+]
