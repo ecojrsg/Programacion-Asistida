@@ -44,14 +44,14 @@ sin una respuesta real que permita identificar qué se revisó y qué se corrigi
 | Corrección de Build a Plan | Agente, plan y nota explícita en README. | Documentado; revisión humana del README pendiente. |
 | Juego inicial completo | Código, pruebas y capturas de fase 1. | Implementado y verificado; revisión humana pendiente. |
 | Refinamiento iterativo en prompts | Formato provisional en el agente; conservar prompts reales al ejecutarlos. | Iteraciones pendientes. |
-| Primera mejora con imagen de referencia | Será una fase posterior; la imagen de consigna no la sustituye. | Pendiente. |
+| Mejora con imagen de referencia | Captura del usuario y corrección de distribución 04. La consigna no se usa como referencia del diseño. | Realizada como refinamiento; validación académica final pendiente. |
 | Mejora adicional con tres escenarios | Será una iteración posterior a la mejora con imagen. | Pendiente. |
 | Control humano de todo lo generado, incluidos los `.md` | Este registro y respuestas reales del estudiante. | Parcial; documentos nuevos pendientes. |
 | Capturas auténticas del juego y las mejoras | Cuatro capturas de fase 1 en `docs/evidence/`; las mejoras son etapas futuras. | Versión inicial hecha; mejoras pendientes. |
 | README orientado al entregable y enlaces a cada `.md` | `README.md` reúne las evidencias y el índice. | Hecho; revisión humana pendiente. |
-| Liga al código | Código local y URL de `origin` en README. No se publicó la carpeta del ejercicio. | Enlace remoto de la entrega pendiente. |
-| Todo el chat crudo con la IA | Transcripción disponible; contraste con exportación nativa aún pendiente. | Parcial. |
-| PDF si no se demuestra terminado en clase | Preparación condicional después de reunir las evidencias. | Condicional; no generado. |
+| Liga al código | Revisión 20723eb publicada y comprobada con gh. | Hecho. |
+| Todo el chat crudo con la IA | Exportación nativa de 54 intervenciones hasta la solicitud del PDF inclusive; fase PDF documentada aparte. | Exportado y cotejado; revisión humana pendiente. |
+| PDF si no se demuestra terminado en clase | PDF de 23 páginas, capturas, ligas y chat. | Generado y revisado técnicamente; revisión humana pendiente. |
 
 La consigna advierte que los puntos sin revisión afectan la calificación y
 menciona «0.2». Esta matriz conserva los pendientes en lugar de declararlos
@@ -99,3 +99,12 @@ corrección, no como aprobación. La [corrección 06](../plans/06-continuous-rol
 utiliza un giro continuo y sincroniza el marcador al asentarse. Su código,
 prueba ampliada, documentos, README y capturas siguen **Pendientes** de revisión
 humana; la comprobación técnica no da por aceptada la fluidez percibida.
+
+El usuario respondió «Perfecto» tras comprobar el giro y pidió el PDF sin más
+cambios del juego. Se registra aceptación de ese resultado observado. Durante
+la preparación autorizó expresamente «Sí, publicar todo el entregable» después
+de indicar que el repositorio es público y el PDF incluye nombre y matrícula.
+Esa autorización permite la publicación; no equivale a aprobar académicamente
+todos los Markdown. El PDF, las exportaciones, los generadores y la documentación
+de entrega continúan pendientes de revisión humana. Los tres escenarios siguen
+sin implementar, como declara el informe.

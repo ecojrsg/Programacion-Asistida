@@ -1,0 +1,393 @@
+{
+  "revision": "20723eb8909e0b4dbe0e7852a2fa0c7021c3256a",
+  "pages": 23,
+  "images": [
+    {
+      "file": "docs/evidence/01-desktop.jpg",
+      "page": 4,
+      "x": 54.00000000000003,
+      "y": 328.7263157894737,
+      "width": 503.99999999999994,
+      "height": 376.6736842105263
+    },
+    {
+      "file": "docs/evidence/04-desktop-spacing.jpg",
+      "page": 5,
+      "x": 54,
+      "y": 216.4167597765363,
+      "width": 504,
+      "height": 488.98324022346367
+    },
+    {
+      "file": "docs/evidence/04-mobile-spacing.jpg",
+      "page": 6,
+      "x": 206.92592592592592,
+      "y": 170.39999999999998,
+      "width": 198.14814814814812,
+      "height": 535
+    },
+    {
+      "file": "docs/evidence/06-dice-rolling.jpg",
+      "page": 7,
+      "x": 76,
+      "y": 321.19032258064516,
+      "width": 205,
+      "height": 384.2096774193548
+    },
+    {
+      "file": "docs/evidence/06-dice-result.jpg",
+      "page": 7,
+      "x": 331,
+      "y": 321.19032258064516,
+      "width": 205,
+      "height": 384.2096774193548
+    },
+    {
+      "file": "docs/evidence/00-assignment.png",
+      "page": 21,
+      "x": 53.99999999999997,
+      "y": 429.17618364418934,
+      "width": 504.00000000000006,
+      "height": 276.22381635581064
+    },
+    {
+      "file": "docs/evidence/03-user-window.png",
+      "page": 22,
+      "x": 54,
+      "y": 508.6560583941606,
+      "width": 504,
+      "height": 196.7439416058394
+    },
+    {
+      "file": "docs/evidence/04-user-spacing.png",
+      "page": 23,
+      "x": 54,
+      "y": 217.3553072625698,
+      "width": 504,
+      "height": 488.0446927374302
+    }
+  ],
+  "links": [
+    {
+      "text": "Abrir imagen original en GitHub",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/evidence/01-desktop.jpg",
+      "page": 4
+    },
+    {
+      "text": "Informe de verificación de la primera fase",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/reviews/01-verification.md",
+      "page": 4
+    },
+    {
+      "text": "Abrir imagen original en GitHub",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/evidence/04-desktop-spacing.jpg",
+      "page": 5
+    },
+    {
+      "text": "Referencia del usuario: elementos tapados",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/evidence/04-user-spacing.png",
+      "page": 5
+    },
+    {
+      "text": "Plan, medidas y revisión de distribución",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/04-board-spacing.md",
+      "page": 5
+    },
+    {
+      "text": "Abrir imagen original en GitHub",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/evidence/04-mobile-spacing.jpg",
+      "page": 6
+    },
+    {
+      "text": "Plan y comprobaciones del giro continuo",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/06-continuous-roll.md",
+      "page": 7
+    },
+    {
+      "text": "Prueba ejecutable de la animación",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/tests/motion.html",
+      "page": 7
+    },
+    {
+      "text": "Matriz completa de revisión humana",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/reviews/00-review-status.md",
+      "page": 8
+    },
+    {
+      "text": "Abrir carpeta del ejercicio en la revisión publicada",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/tree/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras",
+      "page": 9
+    },
+    {
+      "text": "index.html",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/index.html",
+      "page": 9
+    },
+    {
+      "text": "styles.css",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/styles.css",
+      "page": 9
+    },
+    {
+      "text": "game.js",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/game.js",
+      "page": 9
+    },
+    {
+      "text": "script.js",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/script.js",
+      "page": 9
+    },
+    {
+      "text": "visuals/effects.css",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/visuals/effects.css",
+      "page": 9
+    },
+    {
+      "text": "visuals/effects.js",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/visuals/effects.js",
+      "page": 9
+    },
+    {
+      "text": "tests/rules.html",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/tests/rules.html",
+      "page": 9
+    },
+    {
+      "text": "tests/motion.html",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras/tests/motion.html",
+      "page": 9
+    },
+    {
+      "text": "Chat completo de desarrollo en UTF-8",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/07-chat-crudo.txt",
+      "page": 9
+    },
+    {
+      "text": "Chat estructurado, un mensaje por registro JSONL",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/07-chat-crudo.jsonl",
+      "page": 9
+    },
+    {
+      "text": "AGENTS.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/AGENTS.md",
+      "page": 10
+    },
+    {
+      "text": "PRODUCT.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/PRODUCT.md",
+      "page": 10
+    },
+    {
+      "text": "README.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/README.md",
+      "page": 10
+    },
+    {
+      "text": "docs/best-practices/css.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/best-practices/css.md",
+      "page": 10
+    },
+    {
+      "text": "docs/best-practices/html.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/best-practices/html.md",
+      "page": 10
+    },
+    {
+      "text": "docs/best-practices/javascript.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/best-practices/javascript.md",
+      "page": 10
+    },
+    {
+      "text": "docs/conversations/00-planning.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/00-planning.md",
+      "page": 10
+    },
+    {
+      "text": "docs/conversations/01-implementation.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/01-implementation.md",
+      "page": 10
+    },
+    {
+      "text": "docs/conversations/02-layout-fix.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/02-layout-fix.md",
+      "page": 10
+    },
+    {
+      "text": "docs/conversations/03-browser-window.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/03-browser-window.md",
+      "page": 10
+    },
+    {
+      "text": "docs/conversations/04-board-spacing.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/04-board-spacing.md",
+      "page": 10
+    },
+    {
+      "text": "docs/conversations/05-dice-motion.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/05-dice-motion.md",
+      "page": 10
+    },
+    {
+      "text": "docs/conversations/06-continuous-roll.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/06-continuous-roll.md",
+      "page": 10
+    },
+    {
+      "text": "docs/conversations/07-pdf-delivery.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/conversations/07-pdf-delivery.md",
+      "page": 10
+    },
+    {
+      "text": "docs/plans/00-first-phase.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/00-first-phase.md",
+      "page": 10
+    },
+    {
+      "text": "docs/plans/02-layout-fix.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/02-layout-fix.md",
+      "page": 10
+    },
+    {
+      "text": "docs/plans/03-browser-window.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/03-browser-window.md",
+      "page": 10
+    },
+    {
+      "text": "docs/plans/04-board-spacing.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/04-board-spacing.md",
+      "page": 10
+    },
+    {
+      "text": "docs/plans/05-dice-motion.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/05-dice-motion.md",
+      "page": 10
+    },
+    {
+      "text": "docs/plans/06-continuous-roll.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/06-continuous-roll.md",
+      "page": 10
+    },
+    {
+      "text": "docs/plans/07-pdf-delivery.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/07-pdf-delivery.md",
+      "page": 10
+    },
+    {
+      "text": "docs/results/01-first-phase.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/results/01-first-phase.md",
+      "page": 10
+    },
+    {
+      "text": "docs/results/02-layout-fix.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/results/02-layout-fix.md",
+      "page": 10
+    },
+    {
+      "text": "docs/results/03-browser-window.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/results/03-browser-window.md",
+      "page": 10
+    },
+    {
+      "text": "docs/results/04-board-spacing.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/results/04-board-spacing.md",
+      "page": 10
+    },
+    {
+      "text": "docs/results/05-dice-motion.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/results/05-dice-motion.md",
+      "page": 10
+    },
+    {
+      "text": "docs/results/06-continuous-roll.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/results/06-continuous-roll.md",
+      "page": 10
+    },
+    {
+      "text": "docs/results/07-pdf-delivery.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/results/07-pdf-delivery.md",
+      "page": 10
+    },
+    {
+      "text": "docs/reviews/00-review-status.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/reviews/00-review-status.md",
+      "page": 10
+    },
+    {
+      "text": "docs/reviews/01-verification.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/reviews/01-verification.md",
+      "page": 10
+    },
+    {
+      "text": "docs/reviews/07-pdf-delivery.md",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/reviews/07-pdf-delivery.md",
+      "page": 10
+    },
+    {
+      "text": "Abrir imagen original en GitHub",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/evidence/00-assignment.png",
+      "page": 21
+    },
+    {
+      "text": "Consigna adjunta otra vez a la solicitud del PDF",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/evidence/07-assignment-pdf.png",
+      "page": 21
+    },
+    {
+      "text": "Abrir imagen original en GitHub",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/evidence/03-user-window.png",
+      "page": 22
+    },
+    {
+      "text": "Diagnóstico y rectificación de la prueba",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/plans/03-browser-window.md",
+      "page": 22
+    },
+    {
+      "text": "Abrir imagen original en GitHub",
+      "url": "https://github.com/ecojrsg/Programacion-Asistida/blob/main/27vo%20Serpientes%20y%20escaleras/docs/evidence/04-user-spacing.png",
+      "page": 23
+    }
+  ],
+  "unsupported": [],
+  "textReview": {
+    "pages": 23,
+    "links": 56,
+    "footers": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23"
+    ],
+    "chatEntries": 54,
+    "chatMatchesIgnoringLayoutWhitespace": true,
+    "expectedCharacters": 13401,
+    "extractedCharacters": 13401
+  },
+  "finalReview": {
+    "renderedPages": 23,
+    "visuallyReviewedPages": 23,
+    "linksVerifiedAgainstPublishedTree": 56,
+    "markdownFiles": 31,
+    "gameFilesUnchanged": 8
+  }
+}

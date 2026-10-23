@@ -82,7 +82,9 @@ function wrap(line, font, size, maxWidth, literal = false) {
 }
 function para(text, options = {}) {
   const { font = regular, size = 10.5, leading = size * 1.4, x = 54, maxWidth = 504, literal = false, gap = 9, color = ink, url } = options;
-  for (const raw of text.split(/\r?\n/)) for (const line of wrap(raw, font, size, maxWidth, literal)) {
+  const lines = text.split(/\r?\n/);
+  while (lines.length > 1 && lines.at(-1) === '') lines.pop();
+  for (const raw of lines) for (const line of wrap(raw, font, size, maxWidth, literal)) {
     ensure(leading);
     if (line) draw(line, x, y, font, size, color, url);
     y -= leading;

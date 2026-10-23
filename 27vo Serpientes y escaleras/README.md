@@ -2,8 +2,8 @@
 
 Ejercicio 27: serpientes y escaleras con HTML, CSS y JavaScript puros.
 Este README organiza el entregable y sus evidencias. La primera versión está
-implementada y verificada técnicamente; el laboratorio completo todavía requiere
-revisión humana y las dos iteraciones de mejora.
+implementada y verificada técnicamente. El PDF reúne los refinamientos y las
+evidencias; siguen pendientes los tres escenarios y la revisión humana completa.
 
 ## Consigna y decisión sobre el modo Plan
 
@@ -31,14 +31,15 @@ El usuario aprobó el [plan de fase 1](docs/plans/00-first-phase.md) con el mens
 | Ajuste de distribución | A petición del usuario, centrado solo horizontal y contenido alineado arriba; leyenda separada del tablero para mostrar los iconos completos. | [Plan y verificación](docs/plans/04-board-spacing.md), [captura](docs/evidence/04-desktop-spacing.jpg). |
 | Refinamiento del dado | Lanzamiento de 1.25 s con elevación, rebote y asentamiento; sincronización con la ficha y movimiento reducido. | [Plan y pruebas](docs/plans/05-dice-motion.md), [comprobación ejecutable](tests/motion.html). |
 | Corrección del dado | Giro continuo de 1.25 s; el marcador muestra «…» y revela el número al asentarse, antes de mover la ficha. Sustituye el movimiento por tramos anterior. | [Plan, pruebas y capturas](docs/plans/06-continuous-roll.md). |
-| Entrega en PDF | Preparación autorizada sin más cambios del juego; registro nativo del chat recuperado. | [Plan de entrega](docs/plans/07-pdf-delivery.md), [comprobación](docs/reviews/07-pdf-delivery.md). |
-| Iteración 1 | Pendiente: solicitar una mejora concreta y una imagen de referencia del juego. | La consigna no sustituye esa referencia visual. |
+| Entrega en PDF | Documento de 23 páginas, ocho capturas, 54 intervenciones de chat y ligas a los 31 Markdown. | [PDF](../PDFs%20ejercicios/Ejercicio_27_Serpientes_y_Escaleras.pdf), [comprobación](docs/reviews/07-pdf-delivery.md). |
+| Mejora con referencia visual | Corrección de distribución realizada con una captura del usuario; validación académica final pendiente. | [Referencia](docs/evidence/04-user-spacing.png), [plan y resultado](docs/plans/04-board-spacing.md). |
 | Iteración 2 | Pendiente: agregar selección entre tres escenarios y comprobarlos. | Debe conservar la mejora de la iteración anterior. |
 
 Se usó este flujo: petición → preguntas y elecciones del estudiante → plan escrito
 → aprobación humana → implementación → pruebas → resultado y pendientes.
-Las correcciones técnicas durante la verificación de la versión inicial no se
-presentan como las dos iteraciones que aún exige la consigna.
+Se distinguen las correcciones técnicas, la mejora con referencia visual y la
+iteración de tres escenarios que todavía falta. El PDF no inventa validación
+del docente ni afirma que el laboratorio esté completamente terminado.
 
 Para los refinamientos posteriores se conservarán los prompts reales con
 **Meta original**, **Refinamientos anteriores**, **Nuevo refinamiento** y
@@ -125,9 +126,12 @@ movimiento reducido. Los métodos y las pruebas de integración están en el
 
 Repositorio configurado en `origin`:
 [ecojrsg/Programacion-Asistida](https://github.com/ecojrsg/Programacion-Asistida).
-La dirección se obtuvo del remoto local. Esta ejecución no hizo commit, push
-ni publicó una URL de esta carpeta; la liga definitiva de la versión entregada
-queda pendiente. Los enlaces al código local sí corresponden a estos archivos.
+La entrega publicó el código en la revisión
+[20723eb](https://github.com/ecojrsg/Programacion-Asistida/tree/20723eb8909e0b4dbe0e7852a2fa0c7021c3256a/27vo%20Serpientes%20y%20escaleras).
+La ruta y la revisión se verificaron con gh. El PDF usa esa referencia fija
+para el código y enlaces a main para los documentos. El usuario autorizó
+expresamente publicar también PDF, chat, capturas y Markdown en el repositorio
+público, con su nombre y matrícula en la portada.
 
 ## Revisión humana y entrega
 
@@ -144,6 +148,10 @@ Si el juego no se muestra terminado en clase, la consigna pide un **PDF** con:
 - Liga al código entregado y ligas a cada `.md`.
 - Todo el chat crudo con la IA.
 
-El PDF es condicional y todavía no se generó. Antes de prepararlo faltan la
-revisión humana, las dos mejoras posteriores, sus evidencias, la exportación
-completa del chat y una liga remota de la versión que se entregará.
+El [PDF del ejercicio](../PDFs%20ejercicios/Ejercicio_27_Serpientes_y_Escaleras.pdf)
+ya está generado. Se revisaron sus 23 páginas y 56 enlaces; el chat de desarrollo
+se cotejó con su exportación nativa. Los ocho archivos del juego y sus pruebas
+conservan sus hashes SHA256 anteriores a esta fase. El PDF señala expresamente
+que los tres escenarios y la revisión humana de todos los documentos están
+pendientes. La conversación de esta preparación queda registrada aparte del
+chat de desarrollo, cuyo corte llega hasta la solicitud del PDF inclusive.
