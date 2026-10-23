@@ -1,0 +1,13 @@
+{
+  "files": {
+    "index.html": "5d22005864ec70b48811b66975774e4cc77a77a42250a0b4e56d8d2004101843",
+    "styles.css": "22f6250cf568e231b6fa5ce757d178666d9ce4b25a7322e59afe2fcc0b265ec5",
+    "game.js": "114fad761ad8f2a3e2451e97f2780ebd27dfda424ff357e4e3653abd8c2164cf",
+    "script.js": "88effdaed169ca5c90db7212a0424b1213dd84aeb84ef715650289b7091e9e1c",
+    "visuals/effects.css": "efc2abc2b09f4bc166ffdeed658339ba33f8718fb9166e4190d684eb40cee45e",
+    "visuals/effects.js": "2bf08abe5e585b22604d50ab35d0119d1b345e4f892772ac6398deafbb203a0a",
+    "tests/rules.html": "87c223dc28ca2858f32cd9561d95466a908f477a086a6a50a5ce60a2b38b3a7c",
+    "tests/motion.html": "115fa6954b4d28a6334f5d3cce9ffc1d4b5d53baceadc6040d2963c5eaf38aa8"
+  },
+  "note": "Game files captured before PDF authoring; verify after delivery."
+}

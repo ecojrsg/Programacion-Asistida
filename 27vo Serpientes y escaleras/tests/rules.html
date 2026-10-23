@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comprobación de las reglas</title>
+<link rel="stylesheet" href="../styles.css">
+<script src="../game.js"></script>
+<body class="app">
+  <h1>Comprobación de las reglas</h1>
+  <p>Pruebas deterministas, sin dependencias. Abre este archivo en el navegador.</p>
+  <pre id="results"></pre>
+  <p><a href="../index.html">Volver al juego</a></p>
+  <script>
+    const results = document.getElementById("results");
+    let passed = 0;
+    function check(name, test) {
+      try {
+        if (!test()) throw new Error(name);
+        passed += 1;
+        results.textContent += `OK · ${name}\n`;
+      } catch (error) {
+        results.textContent += `ERROR · ${name}\n`;
+        throw error;
+      }
+    }
+    function active(positions = [0, 0], player = 0) {
+      return { ...Game.create(), positions, player, phase: "playing" };
+    }
+    function rejects(callback) {
+      try { callback(); return false; } catch { return true; }
+    }
+    check("Inicio en salida y Jugador 1", () => {
+      const fresh = Game.create();
+      return fresh.positions.every((position) => position === 0) && fresh.player === 0 && fresh.phase === "ready";
+    });
+    check("No se mueve antes de comenzar", () => rejects(() => Game.move(Game.create(), 1)));
+    check("Tirada mínima", () => Game.move(active(), 1).state.positions[0] === 1);
+    check("Un 6 avanza seis y cede turno", () => {
+      const turn = Game.move(active(), 6);
+      return turn.state.positions[0] === 6 && turn.state.player === 1;
+    });
+    check("Dos jugadores alternan", () => {
+      const first = Game.move(active(), 1).state;
+      const second = Game.move(first, 2).state;
+      return second.player === 0 && second.positions[0] === 1 && second.positions[1] === 2 && second.turns === 2;
+    });
+    check("Las fichas pueden compartir casilla", () => Game.move(active([1, 0], 1), 1).state.positions.every((position) => position === 1));
+    check("Escalera de 3 a 22", () => Game.move(active(), 3).state.positions[0] === 22);
+    check("Serpiente de 27 a 5", () => Game.move(active([26, 0]), 1).state.positions[0] === 5);
+    check("Pasar por 3 no activa la escalera", () => Game.move(active(), 4).state.positions[0] === 4);
+    check("Llegada exacta y ganador correcto", () => {
+      const turn = Game.move(active([0, 94], 1), 6).state;
+      return turn.phase === "won" && turn.player === 1 && turn.positions[1] === 100;
+    });
+    check("Pasarse conserva posición y cede turno", () => {
+      const turn = Game.move(active([99, 20]), 2);
+      return turn.state.positions[0] === 99 && turn.state.player === 1 && turn.move.overshoot;
+    });
+    check("No se puede jugar tras ganar", () => rejects(() => Game.move(Game.move(active([99, 0]), 1).state, 1)));
+    check("Las tiradas inválidas se rechazan", () => [0, 7, -1, 1.5, NaN, "3"].every((die) => rejects(() => Game.move(active(), die))));
+    check("El turno no modifica el estado anterior", () => {
+      const before = active();
+      Game.move(before, 3);
+      return before.positions[0] === 0 && before.player === 0 && before.turns === 0;
+    });
+    check("Reiniciar restaura toda la partida", () => {
+      const fresh = Game.create();
+      fresh.positions[0] = 50;
+      return Game.create().positions[0] === 0 && Game.create().phase === "ready" && Game.create().turns === 0;
+    });
+    check("Mapa: seis escaleras y seis serpientes válidas", () => {
+      const jumps = Object.entries(Game.jumps);
+      return jumps.length === 12 && jumps.filter(([from, to]) => to > Number(from)).length === 6 &&
+        jumps.every(([from, to]) => Number(from) > 0 && Number(from) < 100 && to > 0 && to <= 100 && !Game.jumps[to]);
+    });
+    check("Todos los saltos usan el mismo mapa", () => Object.entries(Game.jumps).every(([from, to]) =>
+      Game.move(active([Number(from) - 1, 0]), 1).state.positions[0] === to));
+    results.textContent += `\n${passed} comprobaciones aprobadas.\n`;
+    document.title = `${passed} comprobaciones aprobadas`;
+  </script>
+</body>
+</html>

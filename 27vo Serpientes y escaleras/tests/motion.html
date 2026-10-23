@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comprobación de la animación del dado</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../visuals/effects.css">
+<body class="app">
+  <h1>Animación del dado</h1>
+  <p>Comprobaciones sin dependencias. Las animaciones se finalizan automáticamente.</p>
+  <div class="die-art" id="die-art" aria-hidden="true"></div>
+  <svg id="routes" hidden aria-hidden="true"></svg>
+  <pre id="results"></pre>
+  <p><a href="../index.html">Volver al juego</a></p>
+  <script src="../visuals/effects.js"></script>
+  <script>
+    async function checkMotion() {
+      const results = [];
+      const die = document.querySelector(".die");
+      const front = () => {
+        const rotation = new DOMMatrix(getComputedStyle(die).transform);
+        const normals = [...die.children].map((face) =>
+          rotation.multiply(new DOMMatrix(getComputedStyle(face).transform)).m33);
+        return normals.indexOf(Math.max(...normals)) + 1;
+      };
+      const check = (name, passed) => {
+        if (!passed) throw new Error(name);
+        results.push(`OK · ${name}`);
+      };
+      const original = die.style.transform;
+      try {
+        for (const value of [1, 2, 3, 4, 5, 6, 6]) {
+          const shown = [];
+          const done = Visuals.play({ die: value, overshoot: true }, null, null, () => shown.push(front()));
+          const animation = die.getAnimations()[0];
+          check(`Tirada ${value}: resultado oculto mientras gira`,
+            animation ? shown.length === 0 : shown.length === 1);
+          check(`Tirada ${value}: respeta la preferencia de movimiento`,
+            matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? !animation : animation?.effect.getTiming().duration >= 1000);
+          if (animation && value === 1) {
+            animation.pause();
+            animation.currentTime = 0;
+            let previous = new DOMMatrix(getComputedStyle(die).transform);
+            const steps = [];
+            for (let time = 20; time <= 1100; time += 20) {
+              animation.currentTime = time;
+              const current = new DOMMatrix(getComputedStyle(die).transform);
+              const delta = current.multiply(previous.inverse());
+              steps.push(Math.acos(Math.max(-1, Math.min(1, (delta.m11 + delta.m22 + delta.m33 - 1) / 2))));
+              previous = current;
+            }
+            check("Giro continuo sin pausas intermedias", steps.every((step, i) =>
+              step > .03 && (i === 0 || Math.abs(step - steps[i - 1]) / steps[i - 1] < .2)));
+          }
+          animation?.finish();
+          await done;
+          check(`Tirada ${value}: resultado único al asentarse`, shown.length === 1 && shown[0] === value);
+          const before = new DOMMatrix(getComputedStyle(die).transform).toFloat64Array();
+          Visuals.stop();
+          const after = new DOMMatrix(getComputedStyle(die).transform).toFloat64Array();
+          check(`Tirada ${value}: cara frontal correcta`, front() === value);
+          check(`Tirada ${value}: reposo sin salto`, before.every((n, i) => Math.abs(n - after[i]) < .0001));
+        }
+        let cancelledReveals = 0;
+        const interrupted = Visuals.play({ die: 4, overshoot: true }, null, null, () => cancelledReveals += 1);
+        const wasRunning = die.getAnimations().length > 0;
+        Visuals.reset();
+        await interrupted;
+        check("Cancelar un giro no revela su resultado", !wasRunning || cancelledReveals === 0);
+        check("Reinicio durante un giro conserva la cara inicial", front() === 1);
+        check("Sin animaciones pendientes", die.getAnimations().length === 0);
+        return results;
+      } finally {
+        Visuals.stop();
+        die.style.transform = original;
+      }
+    }
+    Visuals.mount({}, () => ({}));
+    checkMotion().then(
+      (results) => { document.getElementById("results").textContent = results.join("\n"); },
+      (error) => { document.getElementById("results").textContent = `ERROR · ${error.message}`; },
+    );
+  </script>
+</body>
+</html>

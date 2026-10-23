@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f3e8">
+  <title>Serpientes &amp; escaleras — A jugar</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%232c6758'/%3E%3Cpath d='M13 8v24m14-24v24M13 13h14M13 20h14M13 27h14' stroke='%23f8e9bc' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="visuals/effects.css">
+  <script src="game.js" defer></script>
+  <script src="visuals/effects.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="page-header">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 52 60" aria-hidden="true">
+          <path d="M14 9v43M36 9v43M14 15h22M14 27h22M14 39h22" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+          <path d="M44 49C3 51 49 25 22 10" fill="none" stroke="#d66b57" stroke-width="7" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <h1>Serpientes <span>&amp;</span> escaleras</h1>
+          <p>Un dado. Dos rivales. Cien casillas.</p>
+        </div>
+      </div>
+      <span class="local-badge"><span class="status-dot"></span> Dos jugadores · una mesa</span>
+    </header>
+
+    <main class="game-layout">
+      <section class="board-area" aria-labelledby="board-title">
+        <div class="board-heading">
+          <h2 id="board-title">El camino a la cima</h2>
+          <span id="turn-count">0 tiradas</span>
+        </div>
+        <div class="board-stage">
+          <div class="board-shell">
+            <div class="board-plane" id="board-plane">
+              <ol id="board" class="board" aria-label="Tablero del 1 al 100, en recorrido serpenteante"></ol>
+              <svg id="routes" viewBox="0 0 1000 1000" aria-hidden="true"></svg>
+              <div class="pieces" aria-hidden="true">
+                <span class="piece piece-one" id="piece-0">1</span>
+                <span class="piece piece-two" id="piece-1">2</span>
+              </div>
+            </div>
+            <div class="board-edge"><span>Salida</span><span>La suerte cambia en cada casilla</span></div>
+          </div>
+        </div>
+        <div class="board-legend" aria-label="Leyenda">
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 21 12 3m0 18 6-18M8 15h6M10 9h6"/></svg> Escaleras para subir</span>
+          <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 20c18 0-6-11 10-14"/><circle cx="17" cy="5" r="3"/></svg> Serpientes para bajar</span>
+        </div>
+      </section>
+
+      <aside class="play-panel" aria-label="Controles de la partida">
+        <div class="panel-heading">
+          <span class="turn-dot" aria-hidden="true"></span>
+          <h2 id="turn-label">La mesa está lista</h2>
+        </div>
+        <ol class="players" aria-label="Posiciones de los jugadores">
+          <li class="player" id="player-0">
+            <span class="player-token token-one" aria-hidden="true">1</span>
+            <span class="player-name">Jugador 1<small>Ficha coral</small></span>
+            <strong id="position-0">Salida</strong>
+          </li>
+          <li class="player" id="player-1">
+            <span class="player-token token-two" aria-hidden="true">2</span>
+            <span class="player-name">Jugador 2<small>Ficha verde</small></span>
+            <strong id="position-1">Salida</strong>
+          </li>
+        </ol>
+
+        <div class="dice-section">
+          <div id="die-art" class="die-art" aria-hidden="true"></div>
+          <p class="die-readout">Resultado del dado <strong id="die-value">—</strong></p>
+        </div>
+        <button class="primary-button" id="play-button" type="button">Comenzar partida</button>
+        <button class="reset-button" id="reset-button" type="button" disabled>Nueva partida</button>
+        <div class="game-message" id="message" role="status" aria-live="polite" aria-atomic="true">Todo empieza con una tirada. ¿Quién llegará primero?</div>
+        <p class="goal-note">La meta es <strong>100</strong>. Necesitas llegar con una tirada exacta.</p>
+      </aside>
+
+      <details class="rules">
+        <summary>Antes de lanzar: las reglas</summary>
+        <div>
+          <p>Se turnan dos jugadores y comienzan en la salida. Lanza el dado y avanza de 1 a 6 casillas. Sacar 6 no da un turno extra.</p>
+          <p>Si caes al inicio de una escalera, subes. Si caes en la cabeza de una serpiente, bajas. Pasar por encima no activa el salto. Las fichas pueden compartir casilla.</p>
+          <p>Gana quien llegue exactamente a 100. Si te pasas, te quedas donde estás y cedes el turno. Nueva partida borra el progreso, con confirmación si la partida sigue en curso.</p>
+        </div>
+      </details>
+    </main>
+    <footer class="page-footer"><span>Un clásico. Un poco de suerte. Otra partida.</span><span>Hecho para jugar frente a frente.</span></footer>
+    <noscript>Activa JavaScript en tu navegador para jugar.</noscript>
+  </div>
+</body>
+</html>
