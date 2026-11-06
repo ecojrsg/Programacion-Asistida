@@ -2,7 +2,7 @@
 # @Author: Jonathan Serna
 # @Date:   2026-11-06 01:40:52
 # @Last Modified by:   Jonathan Serna
-# @Last Modified time: 2026-11-06 02:03:52
+# @Last Modified time: 2026-11-06 02:22:09
 
 """Build the exercise report from preserved source and real evidence."""
 
@@ -195,8 +195,8 @@ def build_report():
              'concepts/app-testing/cheat-sheet" color="#155e75">AppTest</a>; '
              '<a href="https://mermaid.js.org/config/usage.html" '
              'color="#155e75">Mermaid: renderizado</a>.')
-    add_text(story, "Este PDF queda pendiente de revisión del estudiante "
-             "antes de su segundo commit. No se envió por correo.")
+    add_text(story, f'<b>Código del proyecto en GitHub:</b><br/>'
+             f'<a href="{CODE_URL}" color="#155e75">{CODE_URL}</a>')
 
     document = SimpleDocTemplate(
         str(OUTPUT), pagesize=letter, leftMargin=42, rightMargin=42,
