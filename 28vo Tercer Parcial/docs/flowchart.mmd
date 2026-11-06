@@ -1,0 +1,11 @@
+flowchart TD
+    A([Start]) --> B[Initialize session score if absent]
+    B --> C[Show move selector and Play round button]
+    C --> D{Button clicked?}
+    D -- No --> J[Show last round and score]
+    D -- Yes --> E[Choose random computer move]
+    E --> F[Call determine_winner]
+    F --> K[Increase player, computer, or tie score once]
+    K --> L[Save both moves and result]
+    L --> J
+    J --> M([Wait for next interaction])

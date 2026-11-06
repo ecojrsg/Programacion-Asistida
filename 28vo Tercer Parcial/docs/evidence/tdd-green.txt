@@ -1,0 +1,29 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.2.0, pluggy-1.7.0 -- E:\Universidad\Programacion-Asistida\28vo Tercer Parcial\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: E:\Universidad\Programacion-Asistida\28vo Tercer Parcial
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collecting ... collected 19 items
+
+tests/test_game.py::test_determine_winner[piedra-piedra-tie] PASSED      [  5%]
+tests/test_game.py::test_determine_winner[piedra-papel-computer] PASSED  [ 10%]
+tests/test_game.py::test_determine_winner[piedra-tijera-player] PASSED   [ 15%]
+tests/test_game.py::test_determine_winner[papel-piedra-player] PASSED    [ 21%]
+tests/test_game.py::test_determine_winner[papel-papel-tie] PASSED        [ 26%]
+tests/test_game.py::test_determine_winner[papel-tijera-computer] PASSED  [ 31%]
+tests/test_game.py::test_determine_winner[tijera-piedra-computer] PASSED [ 36%]
+tests/test_game.py::test_determine_winner[tijera-papel-player] PASSED    [ 42%]
+tests/test_game.py::test_determine_winner[tijera-tijera-tie] PASSED      [ 47%]
+tests/test_game.py::test_invalid_move[player-] PASSED                    [ 52%]
+tests/test_game.py::test_invalid_move[player-lagarto] PASSED             [ 57%]
+tests/test_game.py::test_invalid_move[player-Piedra] PASSED              [ 63%]
+tests/test_game.py::test_invalid_move[player-None] PASSED                [ 68%]
+tests/test_game.py::test_invalid_move[player-invalid_move4] PASSED       [ 73%]
+tests/test_game.py::test_invalid_move[computer-] PASSED                  [ 78%]
+tests/test_game.py::test_invalid_move[computer-lagarto] PASSED           [ 84%]
+tests/test_game.py::test_invalid_move[computer-Piedra] PASSED            [ 89%]
+tests/test_game.py::test_invalid_move[computer-None] PASSED              [ 94%]
+tests/test_game.py::test_invalid_move[computer-invalid_move4] PASSED     [100%]
+
+============================= 19 passed in 0.12s ==============================

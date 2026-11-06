@@ -1,0 +1,33 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.2.0, pluggy-1.7.0 -- E:\Universidad\Programacion-Asistida\28vo Tercer Parcial\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: E:\Universidad\Programacion-Asistida\28vo Tercer Parcial
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.16.0
+collecting ... collected 22 items
+
+tests/test_app.py::test_round_and_session_score[tijera-player-Ganaste la ronda.] PASSED [  4%]
+tests/test_app.py::test_round_and_session_score[papel-computer-La computadora gan\xf3 la ronda.] PASSED [  9%]
+tests/test_app.py::test_round_and_session_score[piedra-tie-La ronda termin\xf3 en empate.] PASSED [ 13%]
+tests/test_game.py::test_determine_winner[piedra-piedra-tie] PASSED      [ 18%]
+tests/test_game.py::test_determine_winner[piedra-papel-computer] PASSED  [ 22%]
+tests/test_game.py::test_determine_winner[piedra-tijera-player] PASSED   [ 27%]
+tests/test_game.py::test_determine_winner[papel-piedra-player] PASSED    [ 31%]
+tests/test_game.py::test_determine_winner[papel-papel-tie] PASSED        [ 36%]
+tests/test_game.py::test_determine_winner[papel-tijera-computer] PASSED  [ 40%]
+tests/test_game.py::test_determine_winner[tijera-piedra-computer] PASSED [ 45%]
+tests/test_game.py::test_determine_winner[tijera-papel-player] PASSED    [ 50%]
+tests/test_game.py::test_determine_winner[tijera-tijera-tie] PASSED      [ 54%]
+tests/test_game.py::test_invalid_move[player-] PASSED                    [ 59%]
+tests/test_game.py::test_invalid_move[player-lagarto] PASSED             [ 63%]
+tests/test_game.py::test_invalid_move[player-Piedra] PASSED              [ 68%]
+tests/test_game.py::test_invalid_move[player-None] PASSED                [ 72%]
+tests/test_game.py::test_invalid_move[player-invalid_move4] PASSED       [ 77%]
+tests/test_game.py::test_invalid_move[computer-] PASSED                  [ 81%]
+tests/test_game.py::test_invalid_move[computer-lagarto] PASSED           [ 86%]
+tests/test_game.py::test_invalid_move[computer-Piedra] PASSED            [ 90%]
+tests/test_game.py::test_invalid_move[computer-None] PASSED              [ 95%]
+tests/test_game.py::test_invalid_move[computer-invalid_move4] PASSED     [100%]
+
+============================= 22 passed in 1.84s ==============================

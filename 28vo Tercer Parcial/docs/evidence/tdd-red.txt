@@ -1,0 +1,173 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.5, pytest-9.2.0, pluggy-1.7.0 -- E:\Universidad\Programacion-Asistida\28vo Tercer Parcial\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: E:\Universidad\Programacion-Asistida\28vo Tercer Parcial
+configfile: pyproject.toml
+plugins: anyio-4.16.0
+collecting ... collected 19 items
+
+tests/test_game.py::test_determine_winner[piedra-piedra-tie] FAILED      [  5%]
+tests/test_game.py::test_determine_winner[piedra-papel-computer] FAILED  [ 10%]
+tests/test_game.py::test_determine_winner[piedra-tijera-player] FAILED   [ 15%]
+tests/test_game.py::test_determine_winner[papel-piedra-player] FAILED    [ 21%]
+tests/test_game.py::test_determine_winner[papel-papel-tie] FAILED        [ 26%]
+tests/test_game.py::test_determine_winner[papel-tijera-computer] FAILED  [ 31%]
+tests/test_game.py::test_determine_winner[tijera-piedra-computer] FAILED [ 36%]
+tests/test_game.py::test_determine_winner[tijera-papel-player] FAILED    [ 42%]
+tests/test_game.py::test_determine_winner[tijera-tijera-tie] FAILED      [ 47%]
+tests/test_game.py::test_invalid_move[player-] FAILED                    [ 52%]
+tests/test_game.py::test_invalid_move[player-lagarto] FAILED             [ 57%]
+tests/test_game.py::test_invalid_move[player-Piedra] FAILED              [ 63%]
+tests/test_game.py::test_invalid_move[player-None] FAILED                [ 68%]
+tests/test_game.py::test_invalid_move[player-invalid_move4] FAILED       [ 73%]
+tests/test_game.py::test_invalid_move[computer-] FAILED                  [ 78%]
+tests/test_game.py::test_invalid_move[computer-lagarto] FAILED           [ 84%]
+tests/test_game.py::test_invalid_move[computer-Piedra] FAILED            [ 89%]
+tests/test_game.py::test_invalid_move[computer-None] FAILED              [ 94%]
+tests/test_game.py::test_invalid_move[computer-invalid_move4] FAILED     [100%]
+
+================================== FAILURES ===================================
+__________________ test_determine_winner[piedra-piedra-tie] ___________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+________________ test_determine_winner[piedra-papel-computer] _________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+_________________ test_determine_winner[piedra-tijera-player] _________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+_________________ test_determine_winner[papel-piedra-player] __________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+___________________ test_determine_winner[papel-papel-tie] ____________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+________________ test_determine_winner[papel-tijera-computer] _________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+________________ test_determine_winner[tijera-piedra-computer] ________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+_________________ test_determine_winner[tijera-papel-player] __________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+__________________ test_determine_winner[tijera-tijera-tie] ___________________
+tests\test_game.py:26: in test_determine_winner
+    assert determine_winner(player_move, computer_move) == expected
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+_________________________ test_invalid_move[player-] __________________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+______________________ test_invalid_move[player-lagarto] ______________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+______________________ test_invalid_move[player-Piedra] _______________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+_______________________ test_invalid_move[player-None] ________________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+___________________ test_invalid_move[player-invalid_move4] ___________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+________________________ test_invalid_move[computer-] _________________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+_____________________ test_invalid_move[computer-lagarto] _____________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+_____________________ test_invalid_move[computer-Piedra] ______________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+______________________ test_invalid_move[computer-None] _______________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+__________________ test_invalid_move[computer-invalid_move4] __________________
+tests\test_game.py:36: in test_invalid_move
+    determine_winner(player_move, computer_move)
+game.py:11: in determine_winner
+    raise NotImplementedError
+E   NotImplementedError
+=========================== short test summary info ===========================
+FAILED tests/test_game.py::test_determine_winner[piedra-piedra-tie] - NotImpl...
+FAILED tests/test_game.py::test_determine_winner[piedra-papel-computer] - Not...
+FAILED tests/test_game.py::test_determine_winner[piedra-tijera-player] - NotI...
+FAILED tests/test_game.py::test_determine_winner[papel-piedra-player] - NotIm...
+FAILED tests/test_game.py::test_determine_winner[papel-papel-tie] - NotImplem...
+FAILED tests/test_game.py::test_determine_winner[papel-tijera-computer] - Not...
+FAILED tests/test_game.py::test_determine_winner[tijera-piedra-computer] - No...
+FAILED tests/test_game.py::test_determine_winner[tijera-papel-player] - NotIm...
+FAILED tests/test_game.py::test_determine_winner[tijera-tijera-tie] - NotImpl...
+FAILED tests/test_game.py::test_invalid_move[player-] - NotImplementedError
+FAILED tests/test_game.py::test_invalid_move[player-lagarto] - NotImplemented...
+FAILED tests/test_game.py::test_invalid_move[player-Piedra] - NotImplementedE...
+FAILED tests/test_game.py::test_invalid_move[player-None] - NotImplementedError
+FAILED tests/test_game.py::test_invalid_move[player-invalid_move4] - NotImple...
+FAILED tests/test_game.py::test_invalid_move[computer-] - NotImplementedError
+FAILED tests/test_game.py::test_invalid_move[computer-lagarto] - NotImplement...
+FAILED tests/test_game.py::test_invalid_move[computer-Piedra] - NotImplemente...
+FAILED tests/test_game.py::test_invalid_move[computer-None] - NotImplementedE...
+FAILED tests/test_game.py::test_invalid_move[computer-invalid_move4] - NotImp...
+============================= 19 failed in 0.93s ==============================

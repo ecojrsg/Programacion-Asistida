@@ -1,0 +1,14 @@
+[project]
+name = "third-partial-rps"
+version = "0.1.0"
+description = "A minimal Streamlit rock-paper-scissors game."
+authors = [{ name = "Jonathan Serna" }]
+requires-python = ">=3.14"
+dependencies = ["streamlit==1.65.0"]
+
+[dependency-groups]
+dev = ["pytest>=8.4,<10"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
