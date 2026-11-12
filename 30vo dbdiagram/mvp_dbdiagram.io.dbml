@@ -1,0 +1,15 @@
+Table libros {
+  id integer [pk, increment]
+  titulo varchar(255) [not null]
+  autor varchar(200) [not null]
+  "año" smallint [not null]
+  disponible boolean [not null, default: true]
+
+  checks {
+    `length(trim(titulo)) > 0` [name: 'titulo_no_vacio']
+    `length(trim(autor)) > 0` [name: 'autor_no_vacio']
+    `"año" > 0` [name: 'anio_positivo']
+  }
+
+  Note: 'MVP: un registro por libro. Disponible indica si puede prestarse.'
+}

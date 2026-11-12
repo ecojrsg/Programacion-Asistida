@@ -1,8 +1,8 @@
 # Exercise and Project Register
 
-This repository contains **29 numbered exercises and projects** for
+This repository contains **30 numbered exercises and projects** for
 Programación Asistida. The original work dates are preserved below; projects
-18–29 are listed separately without assigning unverified work dates.
+18–30 are listed separately without assigning unverified work dates.
 
 Each exercise directory is a separate project. Follow its own README or linked
 plan for requirements, setup, execution, and checks. Academic PDF deliverables
@@ -268,3 +268,12 @@ not rerun for this documentation update.
 - **Documentation:** [`README.md`](29vo%20Pruebas%20estacionamiento/README.md) and [original specification](29vo%20Pruebas%20estacionamiento/Specification.md).
 - **Recorded results:** The initial 3 tests pass with 68.42% line coverage. The complete suite records 24 passes and 10 failures with 100% line coverage; failures expose specification violations in the supplied implementation.
 - **PDF:** [`Ejercicio_29_Pruebas_estacionamiento.pdf`](PDFs%20ejercicios/Ejercicio_29_Pruebas_estacionamiento.pdf).
+
+### 30. dbdiagram - Library catalog and MVP
+
+- **Topic:** Database modeling with DBML and dbdiagram.io.
+- **Description:** Compares a 17-field library catalog with a five-field MVP containing id, title, author, year, and availability.
+- **Location:** [`30vo dbdiagram/`](30vo%20dbdiagram/).
+- **Documentation:** [`README.md`](30vo%20dbdiagram/README.md).
+- **Validation:** Both diagrams rendered and were saved privately in dbdiagram.io; source DBML and screenshots are included.
+- **PDF:** [`Ejercicio_30_dbdiagram.pdf`](PDFs%20ejercicios/Ejercicio_30_dbdiagram.pdf).

@@ -1,0 +1,16 @@
+{
+  "completo": {
+    "nombre": "dbdiagram",
+    "url": "https://dbdiagram.io/d/dbdiagram-6af5ff55dec310ec25f387c8",
+    "archivo": "dbdiagram.dbml",
+    "campos": 17
+  },
+  "mvp": {
+    "nombre": "mvp_dbdiagram.io",
+    "url": "https://dbdiagram.io/d/mvp_dbdiagram-io-6af5ffad4fa75117f6758022",
+    "archivo": "mvp_dbdiagram.io.dbml",
+    "campos": 5
+  },
+  "validacion": "Ambos diagramas se renderizaron y mostraron el indicador de guardado en dbdiagram.io.",
+  "visibilidad": "privado"
+}

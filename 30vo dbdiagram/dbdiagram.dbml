@@ -1,0 +1,37 @@
+Table libros {
+  id_libro integer [pk, increment]
+  isbn varchar(13) [unique, note: 'ISBN-10 o ISBN-13, sin guiones. Opcional para libros sin ISBN.']
+  titulo varchar(255) [not null]
+  subtitulo varchar(255)
+  autor_principal varchar(200) [not null]
+  editorial varchar(150)
+  categoria varchar(100) [not null]
+  idioma varchar(50) [not null]
+  anio_publicacion smallint
+  numero_edicion smallint
+  numero_paginas integer
+  sinopsis text
+  ubicacion varchar(100) [note: 'Ejemplo: Sala A, estante 3.']
+  ejemplares_totales integer [not null, default: 0]
+  ejemplares_disponibles integer [not null, default: 0]
+  fecha_registro timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  observaciones text
+
+  indexes {
+    titulo
+    autor_principal
+    categoria
+  }
+
+  checks {
+    `length(trim(titulo)) > 0` [name: 'titulo_no_vacio']
+    `isbn IS NULL OR length(isbn) IN (10, 13)` [name: 'longitud_isbn_valida']
+    `anio_publicacion > 0` [name: 'anio_positivo']
+    `numero_edicion > 0` [name: 'edicion_positiva']
+    `numero_paginas > 0` [name: 'paginas_positivas']
+    `ejemplares_totales >= 0` [name: 'total_no_negativo']
+    `ejemplares_disponibles >= 0 AND ejemplares_disponibles <= ejemplares_totales` [name: 'disponibilidad_valida']
+  }
+
+  Note: 'Catalogo sencillo: una fila por edicion, con un autor principal y una categoria.'
+}
