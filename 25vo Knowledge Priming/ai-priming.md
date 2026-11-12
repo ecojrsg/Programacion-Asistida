@@ -1,6 +1,4 @@
 # Knowledge Priming: mi Castillo Matemático
-> Borrador asistido por IA: debo revisarlo y redactar mi versión personal para cumplir la consigna sin IA.
-Base: ejercicio 19 en `main`, revisado el 21 de octubre de 2026.
 
 ## 1. Arquitectura
 - Separo la interfaz en `app.py` y las reglas en `game.py`; conservo la partida en `st.session_state.game` como diccionario.
