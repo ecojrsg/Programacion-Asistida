@@ -2,7 +2,7 @@
 # @Author: Jonathan Serna
 # @Date:   2026-11-12 10:36:06
 # @Last Modified by:   Jonathan Serna
-# @Last Modified time: 2026-11-12 10:46:56
+# @Last Modified time: 2026-11-12 10:52:22
 
 """Build the academic report from the preserved test evidence."""
 
@@ -129,7 +129,6 @@ def build_report():
     add_text(story, "Ingeniería en Software", "CoverName")
     add_text(story, "Programación Asistida por Inteligencia Artificial",
              "CoverName")
-    add_text(story, "12 de noviembre de 2026", "CoverName")
 
     add_page(story, "1. Objetivo y especificación")
     add_text(story, "Mi objetivo fue comprobar la función "

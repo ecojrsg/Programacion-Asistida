@@ -2,7 +2,7 @@
   "pages": 7,
   "page_size": "US Letter, 612 x 792 points",
   "author": "Jonathan Serna",
-  "pdf_sha256": "e87988d769e35bd769f84313fbf2d89a1c0cb11d336700bc192f259c0eed1984",
+  "pdf_sha256": "b881d374c44ed33ef36cc37fec53fdd5ca54198b36f86b65ec7dc972b75c2ea8",
   "source_and_specification_byte_identical": true,
   "source_sha256": "397a532f643fc907db261dc07e30d8d4265ecf6c3b609b2f6ad3eca71d84b6a6",
   "initial_tests": 3,
@@ -19,10 +19,11 @@
   ],
   "python_checks": "AST syntax, 79-character lines, trailing whitespace, module/class/function docstrings",
   "full_style_linter": "Not installed; not added for this exercise",
-  "visual_review": "Page 2 rendered at 110 DPI and inspected after removal of the selected interpretation and runtime block; all other pages text unchanged.",
+  "visual_review": "Cover rendered at 110 DPI and inspected after removal of its date; pages 2 through 7 text unchanged.",
   "removed_requested_block": true,
-  "last_edit_page": 2,
+  "last_edit_page": 1,
   "other_pages_text_unchanged": true,
   "page_2_only_selected_text_removed": true,
-  "previous_page_7_removal_preserved": true
+  "previous_page_7_removal_preserved": true,
+  "cover_date_removed": true
 }
