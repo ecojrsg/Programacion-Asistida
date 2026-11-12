@@ -1,0 +1,30 @@
+       #!/usr/bin/env python3
+       # -*- coding: utf-8 -*-
+    1: """
+       Developer: .
+       Creation Date: 2026-10-26.
+       Description: Parking lot excercise.
+       """
+       
+    1: import math
+       
+       
+    1: def calculate_toll(minutes: float, type: str = "auto", weekend: bool = False) -> int:
+    3:     if minutes < 0:
+    1:         raise ValueError("Minutes cannot be negative")
+    2:     if minutes <= 15:
+    1:         return 0
+       
+    1:     hours = math.ceil(minutes / 60)
+    1:     if type == "auto":
+    1:         toll = 20
+>>>>>>     elif type == "moto":
+>>>>>>         toll = 10
+>>>>>>     elif type == "pension":
+>>>>>>         return 0
+           else:
+>>>>>>         raise ValueError("Invalid vehicle type.")
+    1:     total = hours * toll
+    1:     if weekend:
+>>>>>>         total *= 1.5
+    1:     return min(total, 200)

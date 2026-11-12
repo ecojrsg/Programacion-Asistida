@@ -1,0 +1,28 @@
+{
+  "pages": 7,
+  "page_size": "US Letter, 612 x 792 points",
+  "author": "Jonathan Serna",
+  "pdf_sha256": "e87988d769e35bd769f84313fbf2d89a1c0cb11d336700bc192f259c0eed1984",
+  "source_and_specification_byte_identical": true,
+  "source_sha256": "397a532f643fc907db261dc07e30d8d4265ecf6c3b609b2f6ad3eca71d84b6a6",
+  "initial_tests": 3,
+  "complete_tests": 34,
+  "passed": 24,
+  "failed": 10,
+  "errors": 0,
+  "line_coverage_percent": 100,
+  "branch_coverage_measured": false,
+  "out_of_bounds_words": 0,
+  "reference_links": [
+    "https://docs.python.org/3.12/library/unittest.html",
+    "https://docs.python.org/3.12/library/trace.html"
+  ],
+  "python_checks": "AST syntax, 79-character lines, trailing whitespace, module/class/function docstrings",
+  "full_style_linter": "Not installed; not added for this exercise",
+  "visual_review": "Page 2 rendered at 110 DPI and inspected after removal of the selected interpretation and runtime block; all other pages text unchanged.",
+  "removed_requested_block": true,
+  "last_edit_page": 2,
+  "other_pages_text_unchanged": true,
+  "page_2_only_selected_text_removed": true,
+  "previous_page_7_removal_preserved": true
+}

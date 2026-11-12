@@ -1,0 +1,47 @@
+{
+  "author": "Jonathan Serna",
+  "date": "2026-11-12",
+  "python_version": "3.12.14",
+  "test_framework": "unittest",
+  "coverage_tool": "stdlib trace",
+  "coverage_scope": "parking_lot.py executable lines reported by trace; branch coverage not measured",
+  "source_unchanged": true,
+  "source_original_sha256": "397a532f643fc907db261dc07e30d8d4265ecf6c3b609b2f6ad3eca71d84b6a6",
+  "source_copy_sha256": "397a532f643fc907db261dc07e30d8d4265ecf6c3b609b2f6ad3eca71d84b6a6",
+  "specification_sha256": "4e00bef7a129ac852f951d07c99e136e28614628fcadba485153b66966963884",
+  "stages": {
+    "initial": {
+      "tests": 3,
+      "passed": 3,
+      "failures": 0,
+      "errors": 0,
+      "covered_lines": 13,
+      "total_lines": 19,
+      "line_coverage_percent": 68.42,
+      "test_exit_code": 0,
+      "failed_tests": []
+    },
+    "full": {
+      "tests": 34,
+      "passed": 24,
+      "failures": 10,
+      "errors": 0,
+      "covered_lines": 19,
+      "total_lines": 19,
+      "line_coverage_percent": 100.0,
+      "test_exit_code": 1,
+      "failed_tests": [
+        "test_auto_after_capped_hour",
+        "test_auto_first_capped_minute",
+        "test_auto_weekend_above_cap",
+        "test_day_long_auto_stay_is_capped",
+        "test_moto_above_cap",
+        "test_moto_weekend_above_cap",
+        "test_pension_is_invalid_at_fifteen_minutes",
+        "test_pension_is_invalid_at_zero_minutes",
+        "test_pension_is_invalid_for_paid_stays",
+        "test_week_long_moto_stay_is_capped"
+      ]
+    }
+  }
+}

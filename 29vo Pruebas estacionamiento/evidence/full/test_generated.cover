@@ -1,0 +1,143 @@
+       # -*- coding: utf-8 -*-
+       # @Author: Jonathan Serna
+       # @Date:   2026-11-12 10:32:58
+       # @Last Modified by:   Jonathan Serna
+       # @Last Modified time: 2026-11-12 10:32:58
+       
+    1: """Test parking tolls against the published specification."""
+       
+    1: import unittest
+       
+    1: from parking_lot import calculate_toll
+       
+       
+    2: class GeneratedTollTests(unittest.TestCase):
+    1:     """Verify duration boundaries, vehicle rates, surcharges, and caps."""
+       
+    1:     def test_zero_minutes_are_free(self):
+               """Charge nothing for a zero-minute stay."""
+    1:         self.assertEqual(calculate_toll(0), 0)
+       
+    1:     def test_fourteen_minutes_are_free(self):
+               """Charge nothing below the free-duration threshold."""
+    1:         self.assertEqual(calculate_toll(14), 0)
+       
+    1:     def test_sixteen_minutes_cost_one_auto_hour(self):
+               """Charge one auto hour immediately after the free period."""
+    1:         self.assertEqual(calculate_toll(16), 20)
+       
+    1:     def test_sixty_minutes_cost_one_auto_hour(self):
+               """Charge one auto hour at the first full-hour boundary."""
+    1:         self.assertEqual(calculate_toll(60), 20)
+       
+    1:     def test_sixty_one_minutes_cost_two_auto_hours(self):
+               """Charge two hours without subtracting the free threshold."""
+    1:         self.assertEqual(calculate_toll(61), 40)
+       
+    1:     def test_one_hundred_twenty_minutes_cost_two_auto_hours(self):
+               """Charge two auto hours at the second full-hour boundary."""
+    1:         self.assertEqual(calculate_toll(120), 40)
+       
+    1:     def test_one_hundred_twenty_one_minutes_cost_three_auto_hours(self):
+               """Round a fraction beyond two hours up to three auto hours."""
+    1:         self.assertEqual(calculate_toll(121), 60)
+       
+    1:     def test_sixteen_moto_minutes_cost_ten(self):
+               """Apply the published moto example."""
+    1:         self.assertEqual(calculate_toll(16, "moto"), 10)
+       
+    1:     def test_sixty_one_moto_minutes_cost_twenty(self):
+               """Round a moto stay beyond one hour up to two hours."""
+    1:         self.assertEqual(calculate_toll(61, "moto"), 20)
+       
+    1:     def test_sixteen_auto_weekend_minutes_cost_thirty(self):
+               """Increase the auto hourly rate by fifty percent."""
+    1:         self.assertEqual(calculate_toll(16, "auto", True), 30)
+       
+    1:     def test_one_hundred_twenty_auto_weekend_minutes_cost_sixty(self):
+               """Apply the published auto weekend example."""
+    1:         self.assertEqual(calculate_toll(120, "auto", True), 60)
+       
+    1:     def test_sixteen_moto_weekend_minutes_cost_fifteen(self):
+               """Increase the moto hourly rate by fifty percent."""
+    1:         self.assertEqual(calculate_toll(16, "moto", True), 15)
+       
+    1:     def test_fifteen_moto_weekend_minutes_are_free(self):
+               """Preserve the free period for motos on weekends."""
+    1:         self.assertEqual(calculate_toll(15, "moto", True), 0)
+       
+    1:     def test_auto_before_cap(self):
+               """Charge seven auto hours below the maximum toll."""
+    1:         self.assertEqual(calculate_toll(420, "auto"), 140)
+       
+    1:     def test_auto_first_capped_minute(self):
+               """Cap the first rounded auto charge above the maximum."""
+    1:         self.assertEqual(calculate_toll(421, "auto"), 150)
+       
+    1:     def test_auto_after_capped_hour(self):
+               """Keep a longer auto stay at the maximum toll."""
+    1:         self.assertEqual(calculate_toll(481, "auto"), 150)
+       
+    1:     def test_moto_before_cap(self):
+               """Charge fourteen moto hours below the maximum toll."""
+    1:         self.assertEqual(calculate_toll(840, "moto"), 140)
+       
+    1:     def test_moto_at_cap(self):
+               """Allow a moto charge equal to the maximum toll."""
+    1:         self.assertEqual(calculate_toll(900, "moto"), 150)
+       
+    1:     def test_moto_above_cap(self):
+               """Cap the moto charge after fifteen hours."""
+    1:         self.assertEqual(calculate_toll(901, "moto"), 150)
+       
+    1:     def test_auto_weekend_before_cap(self):
+               """Charge four weekend auto hours below the maximum."""
+    1:         self.assertEqual(calculate_toll(240, "auto", True), 120)
+       
+    1:     def test_auto_weekend_at_cap(self):
+               """Allow five weekend auto hours to reach the maximum."""
+    1:         self.assertEqual(calculate_toll(300, "auto", True), 150)
+       
+    1:     def test_auto_weekend_above_cap(self):
+               """Apply the maximum after the auto weekend surcharge."""
+    1:         self.assertEqual(calculate_toll(301, "auto", True), 150)
+       
+    1:     def test_moto_weekend_before_cap(self):
+               """Charge nine weekend moto hours below the maximum."""
+    1:         self.assertEqual(calculate_toll(540, "moto", True), 135)
+       
+    1:     def test_moto_weekend_at_cap(self):
+               """Allow ten weekend moto hours to reach the maximum."""
+    1:         self.assertEqual(calculate_toll(600, "moto", True), 150)
+       
+    1:     def test_moto_weekend_above_cap(self):
+               """Apply the maximum after the moto weekend surcharge."""
+    1:         self.assertEqual(calculate_toll(601, "moto", True), 150)
+       
+    1:     def test_day_long_auto_stay_is_capped(self):
+               """Apply one maximum toll to a full-day auto stay."""
+    1:         self.assertEqual(calculate_toll(1440, "auto"), 150)
+       
+    1:     def test_week_long_moto_stay_is_capped(self):
+               """Keep a multi-day moto stay under one maximum toll."""
+    1:         self.assertEqual(calculate_toll(10080, "moto"), 150)
+       
+    1:     def test_pension_is_invalid_at_zero_minutes(self):
+               """Reject pension even when the stay has zero duration."""
+    2:         with self.assertRaises(ValueError):
+    1:             calculate_toll(0, "pension")
+       
+    1:     def test_pension_is_invalid_at_fifteen_minutes(self):
+               """Reject pension at the free-duration boundary."""
+    2:         with self.assertRaises(ValueError):
+    1:             calculate_toll(15, "pension")
+       
+    1:     def test_pension_is_invalid_for_paid_stays(self):
+               """Reject pension when a valid vehicle would be charged."""
+    2:         with self.assertRaises(ValueError):
+    1:             calculate_toll(60, "pension")
+       
+    1:     def test_truck_is_invalid(self):
+               """Reject another vehicle outside the two supported types."""
+    2:         with self.assertRaises(ValueError):
+    1:             calculate_toll(60, "truck")

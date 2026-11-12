@@ -1,0 +1,14 @@
+test_first_fifteen_minutes_are_free (test_initial.InitialTollTests.test_first_fifteen_minutes_are_free)
+Charge nothing at the end of the free period. ... ok
+test_negative_minutes_raise_value_error (test_initial.InitialTollTests.test_negative_minutes_raise_value_error)
+Reject a stay with negative minutes. ... ok
+test_ninety_minutes_cost_forty_for_auto (test_initial.InitialTollTests.test_ninety_minutes_cost_forty_for_auto)
+Round ninety minutes up to two billable hours. ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+lines   cov%   module   (path)
+   19    68%   parking_lot   (E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\parking_lot.py)
+   12   100%   test_initial   (E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_initial.py)

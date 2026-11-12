@@ -1,0 +1,166 @@
+test_first_fifteen_minutes_are_free (test_initial.InitialTollTests.test_first_fifteen_minutes_are_free)
+Charge nothing at the end of the free period. ... ok
+test_negative_minutes_raise_value_error (test_initial.InitialTollTests.test_negative_minutes_raise_value_error)
+Reject a stay with negative minutes. ... ok
+test_ninety_minutes_cost_forty_for_auto (test_initial.InitialTollTests.test_ninety_minutes_cost_forty_for_auto)
+Round ninety minutes up to two billable hours. ... ok
+test_auto_after_capped_hour (test_generated.GeneratedTollTests.test_auto_after_capped_hour)
+Keep a longer auto stay at the maximum toll. ... FAIL
+test_auto_before_cap (test_generated.GeneratedTollTests.test_auto_before_cap)
+Charge seven auto hours below the maximum toll. ... ok
+test_auto_first_capped_minute (test_generated.GeneratedTollTests.test_auto_first_capped_minute)
+Cap the first rounded auto charge above the maximum. ... FAIL
+test_auto_weekend_above_cap (test_generated.GeneratedTollTests.test_auto_weekend_above_cap)
+Apply the maximum after the auto weekend surcharge. ... FAIL
+test_auto_weekend_at_cap (test_generated.GeneratedTollTests.test_auto_weekend_at_cap)
+Allow five weekend auto hours to reach the maximum. ... ok
+test_auto_weekend_before_cap (test_generated.GeneratedTollTests.test_auto_weekend_before_cap)
+Charge four weekend auto hours below the maximum. ... ok
+test_day_long_auto_stay_is_capped (test_generated.GeneratedTollTests.test_day_long_auto_stay_is_capped)
+Apply one maximum toll to a full-day auto stay. ... FAIL
+test_fifteen_moto_weekend_minutes_are_free (test_generated.GeneratedTollTests.test_fifteen_moto_weekend_minutes_are_free)
+Preserve the free period for motos on weekends. ... ok
+test_fourteen_minutes_are_free (test_generated.GeneratedTollTests.test_fourteen_minutes_are_free)
+Charge nothing below the free-duration threshold. ... ok
+test_moto_above_cap (test_generated.GeneratedTollTests.test_moto_above_cap)
+Cap the moto charge after fifteen hours. ... FAIL
+test_moto_at_cap (test_generated.GeneratedTollTests.test_moto_at_cap)
+Allow a moto charge equal to the maximum toll. ... ok
+test_moto_before_cap (test_generated.GeneratedTollTests.test_moto_before_cap)
+Charge fourteen moto hours below the maximum toll. ... ok
+test_moto_weekend_above_cap (test_generated.GeneratedTollTests.test_moto_weekend_above_cap)
+Apply the maximum after the moto weekend surcharge. ... FAIL
+test_moto_weekend_at_cap (test_generated.GeneratedTollTests.test_moto_weekend_at_cap)
+Allow ten weekend moto hours to reach the maximum. ... ok
+test_moto_weekend_before_cap (test_generated.GeneratedTollTests.test_moto_weekend_before_cap)
+Charge nine weekend moto hours below the maximum. ... ok
+test_one_hundred_twenty_auto_weekend_minutes_cost_sixty (test_generated.GeneratedTollTests.test_one_hundred_twenty_auto_weekend_minutes_cost_sixty)
+Apply the published auto weekend example. ... ok
+test_one_hundred_twenty_minutes_cost_two_auto_hours (test_generated.GeneratedTollTests.test_one_hundred_twenty_minutes_cost_two_auto_hours)
+Charge two auto hours at the second full-hour boundary. ... ok
+test_one_hundred_twenty_one_minutes_cost_three_auto_hours (test_generated.GeneratedTollTests.test_one_hundred_twenty_one_minutes_cost_three_auto_hours)
+Round a fraction beyond two hours up to three auto hours. ... ok
+test_pension_is_invalid_at_fifteen_minutes (test_generated.GeneratedTollTests.test_pension_is_invalid_at_fifteen_minutes)
+Reject pension at the free-duration boundary. ... FAIL
+test_pension_is_invalid_at_zero_minutes (test_generated.GeneratedTollTests.test_pension_is_invalid_at_zero_minutes)
+Reject pension even when the stay has zero duration. ... FAIL
+test_pension_is_invalid_for_paid_stays (test_generated.GeneratedTollTests.test_pension_is_invalid_for_paid_stays)
+Reject pension when a valid vehicle would be charged. ... FAIL
+test_sixteen_auto_weekend_minutes_cost_thirty (test_generated.GeneratedTollTests.test_sixteen_auto_weekend_minutes_cost_thirty)
+Increase the auto hourly rate by fifty percent. ... ok
+test_sixteen_minutes_cost_one_auto_hour (test_generated.GeneratedTollTests.test_sixteen_minutes_cost_one_auto_hour)
+Charge one auto hour immediately after the free period. ... ok
+test_sixteen_moto_minutes_cost_ten (test_generated.GeneratedTollTests.test_sixteen_moto_minutes_cost_ten)
+Apply the published moto example. ... ok
+test_sixteen_moto_weekend_minutes_cost_fifteen (test_generated.GeneratedTollTests.test_sixteen_moto_weekend_minutes_cost_fifteen)
+Increase the moto hourly rate by fifty percent. ... ok
+test_sixty_minutes_cost_one_auto_hour (test_generated.GeneratedTollTests.test_sixty_minutes_cost_one_auto_hour)
+Charge one auto hour at the first full-hour boundary. ... ok
+test_sixty_one_minutes_cost_two_auto_hours (test_generated.GeneratedTollTests.test_sixty_one_minutes_cost_two_auto_hours)
+Charge two hours without subtracting the free threshold. ... ok
+test_sixty_one_moto_minutes_cost_twenty (test_generated.GeneratedTollTests.test_sixty_one_moto_minutes_cost_twenty)
+Round a moto stay beyond one hour up to two hours. ... ok
+test_truck_is_invalid (test_generated.GeneratedTollTests.test_truck_is_invalid)
+Reject another vehicle outside the two supported types. ... ok
+test_week_long_moto_stay_is_capped (test_generated.GeneratedTollTests.test_week_long_moto_stay_is_capped)
+Keep a multi-day moto stay under one maximum toll. ... FAIL
+test_zero_minutes_are_free (test_generated.GeneratedTollTests.test_zero_minutes_are_free)
+Charge nothing for a zero-minute stay. ... ok
+
+======================================================================
+FAIL: test_auto_after_capped_hour (test_generated.GeneratedTollTests.test_auto_after_capped_hour)
+Keep a longer auto stay at the maximum toll.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 79, in test_auto_after_capped_hour
+    self.assertEqual(calculate_toll(481, "auto"), 150)
+AssertionError: 180 != 150
+
+======================================================================
+FAIL: test_auto_first_capped_minute (test_generated.GeneratedTollTests.test_auto_first_capped_minute)
+Cap the first rounded auto charge above the maximum.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 75, in test_auto_first_capped_minute
+    self.assertEqual(calculate_toll(421, "auto"), 150)
+AssertionError: 160 != 150
+
+======================================================================
+FAIL: test_auto_weekend_above_cap (test_generated.GeneratedTollTests.test_auto_weekend_above_cap)
+Apply the maximum after the auto weekend surcharge.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 103, in test_auto_weekend_above_cap
+    self.assertEqual(calculate_toll(301, "auto", True), 150)
+AssertionError: 180.0 != 150
+
+======================================================================
+FAIL: test_day_long_auto_stay_is_capped (test_generated.GeneratedTollTests.test_day_long_auto_stay_is_capped)
+Apply one maximum toll to a full-day auto stay.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 119, in test_day_long_auto_stay_is_capped
+    self.assertEqual(calculate_toll(1440, "auto"), 150)
+AssertionError: 200 != 150
+
+======================================================================
+FAIL: test_moto_above_cap (test_generated.GeneratedTollTests.test_moto_above_cap)
+Cap the moto charge after fifteen hours.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 91, in test_moto_above_cap
+    self.assertEqual(calculate_toll(901, "moto"), 150)
+AssertionError: 160 != 150
+
+======================================================================
+FAIL: test_moto_weekend_above_cap (test_generated.GeneratedTollTests.test_moto_weekend_above_cap)
+Apply the maximum after the moto weekend surcharge.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 115, in test_moto_weekend_above_cap
+    self.assertEqual(calculate_toll(601, "moto", True), 150)
+AssertionError: 165.0 != 150
+
+======================================================================
+FAIL: test_pension_is_invalid_at_fifteen_minutes (test_generated.GeneratedTollTests.test_pension_is_invalid_at_fifteen_minutes)
+Reject pension at the free-duration boundary.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 132, in test_pension_is_invalid_at_fifteen_minutes
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_pension_is_invalid_at_zero_minutes (test_generated.GeneratedTollTests.test_pension_is_invalid_at_zero_minutes)
+Reject pension even when the stay has zero duration.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 127, in test_pension_is_invalid_at_zero_minutes
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_pension_is_invalid_for_paid_stays (test_generated.GeneratedTollTests.test_pension_is_invalid_for_paid_stays)
+Reject pension when a valid vehicle would be charged.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 137, in test_pension_is_invalid_for_paid_stays
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_week_long_moto_stay_is_capped (test_generated.GeneratedTollTests.test_week_long_moto_stay_is_capped)
+Keep a multi-day moto stay under one maximum toll.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\Universidad\Programacion-Asistida\29vo Pruebas estacionamiento\test_generated.py", line 123, in test_week_long_moto_stay_is_capped
+    self.assertEqual(calculate_toll(10080, "moto"), 150)
+AssertionError: 200 != 150
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.004s
+
+FAILED (failures=10)
